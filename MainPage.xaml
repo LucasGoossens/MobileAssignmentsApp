@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Image Source="clownfish_splash.jpg"
+                   HeightRequest="500"
+                   Aspect="AspectFill"/>
+
+            <Button Text="Login" Clicked="NavigateToLogin"
+                    WidthRequest="350"
+                    Padding="0,20,0,20"
+                    Margin="0,10,0,10"
+                    BackgroundColor="DarkBlue"
+                    FontSize="Medium"
+                    />
+            <Button Text="Registration" Clicked="NavigateToRegister"
+                    WidthRequest="350"
+                    Padding="0,20,0,20"
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    BorderColor="Black"
+                    BorderWidth="1"
+                    FontSize="Medium"
+                    />
+            
+            
+            <Button Text="Frontpage" Clicked="NavigateToTrending"
+                    WidthRequest="100"
+                    Margin="0,10,0,10"
+                    BackgroundColor="White"
+                    TextColor="black"
+                    BorderWidth="1"
+                    BorderColor="MediumPurple"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.Frontpage"
+             Title="Frontpage">
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+            <Label Text="Trending Challenges"
+                   FontSize="Title"
+                   Padding="10,10,0,0" />
+
+            <FlexLayout
+                Wrap="Wrap"
+                x:Name="TrendingChallengesFlexLayout"
+                Direction="Row"
+                JustifyContent="Start"
+                AlignItems="Start"
+                Margin="10">
+            </FlexLayout>
+
+            <Label Text="Recent Challenges"
+                   FontSize="Title"
+                Padding="10,10,0,0" />
+
+            <ScrollView>
+                <FlexLayout                     
+                     x:Name="RecentChallengesFlexlayout"
+                     Direction="Column"
+                     JustifyContent="Start"
+                     AlignItems="Center"
+                     Margin="10">
+                </FlexLayout>
+            </ScrollView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.AssignmentSubmissions"
+             Title="AssignmentSubmissions">
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+
+            <Grid>
+                <Image Source="ocean.jpg" />
+
+                <Label Text="{Binding AssignmentTitle}"
+                   HorizontalOptions="Center"
+                   VerticalOptions="EndAndExpand"
+                   TextColor="White"
+                   FontSize="24"
+                   BackgroundColor="#88000000"
+                   Padding="100,10,100,10"
+                   HorizontalTextAlignment="Center"
+                   VerticalTextAlignment="Center" />
+
+            </Grid>
+
+            <Frame                    
+           Margin="0"
+           HasShadow="False"
+           BorderColor="Transparent">
+
+                <Grid>
+                    <Label Text="Explanation of assignment details, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in libero fermentum, hendrerit ex vel, interdum quam. Duis finibus maximus dictum. Integer ut egestas quam. Donec fringilla venenatis fermentum. Ut dolor nibh, lacinia vitae justo vel, pretium volutpat nulla. Integer vitae elementum nibh."
+                   FontSize="Caption"
+                   TextColor="Black"
+                   Padding="0,0,0,10"
+                   LineBreakMode="WordWrap" />
+
+
+                    <BoxView HeightRequest="1"
+                     VerticalOptions="End"
+                     HorizontalOptions="Fill"
+                     
+                 Color="Gray" />
+                </Grid>
+            </Frame>
+
+            <Label Text="Popular Submissions"
+               FontSize="Title"
+               Padding="15,8,0,0" />
+
+            <ScrollView Orientation="Horizontal">
+                <FlexLayout
+            x:Name="PopularSubmissions"
+            Direction="Row"
+            JustifyContent="Start"
+            AlignItems="Start"
+            Margin="10">
+                </FlexLayout>
+            </ScrollView>
+
+            <BoxView HeightRequest="1"
+                     WidthRequest="380"
+            VerticalOptions="End"
+            HorizontalOptions="Fill"    
+            Color="Grey"
+                     />
+            
+            <Label Text="New"
+               FontSize="Title"
+            Padding="15,8,0,0" />            
+
+            <ScrollView Orientation="Horizontal">
+                <FlexLayout                     
+                 x:Name="NewSubmissions"
+                 Wrap="Wrap"
+                 Direction="Column"
+                 JustifyContent="Start"
+                 AlignItems="Start"
+                 Margin="10">
+                </FlexLayout>
+            </ScrollView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
