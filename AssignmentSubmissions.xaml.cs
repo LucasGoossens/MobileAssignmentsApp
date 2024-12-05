@@ -14,8 +14,8 @@ public partial class AssignmentSubmissions : ContentPage
                 CornerRadius = 10,
                 Padding = 0,
                 Margin = new Thickness(3, 0, 3, 0),
-                WidthRequest = 180,
-                HeightRequest = 300,
+                WidthRequest = 150,
+                HeightRequest = 280,
                 HasShadow = false,
             };
             var image = new Image
@@ -45,9 +45,9 @@ public partial class AssignmentSubmissions : ContentPage
             {
                 CornerRadius = 10,
                 Padding = 0,
-                Margin = new Thickness(3, 0, 3, 0),
-                WidthRequest = 180,
-                HeightRequest = 300,
+                Margin = new Thickness(3, 0, 3, 3),
+                WidthRequest = 160,
+                HeightRequest = 280,
                 HasShadow = false,
             };
             var image = new Image

@@ -23,20 +23,24 @@
 
         </Grid>
 
-        <Label Text="Assignments" FontSize="36" FontAttributes="Bold" />
+        <Label Text="Assignments" FontSize="Title" FontAttributes="Bold" Padding="10" />
 
-            <Label Text="Unlocked" FontSize="24"/>
+            <Label Text="Unlocked" FontSize="24" Padding="10,0,0,0"/>
             <FlexLayout x:Name="UnlockedAssignments" Direction="Column" AlignItems="Center">
             </FlexLayout>
-
-            <Label Text="Completed" FontSize="24"/>
+        
+            <Border Margin="10,20,10,10"/>
+        
+            <Label Text="Completed" FontSize="24" Padding="10,10,0,0"/>
             <FlexLayout x:Name="CompletedAssignments" Direction="Column" AlignItems="Center">
             </FlexLayout>
+        
+            <Border Margin="10,20,10,10"/>
 
-
-            <Label Text="Locked" FontSize="24"/>
+            <Label Text="Locked" FontSize="24" Padding="10,0,0,0"/>
             <FlexLayout x:Name="LockedAssignments" Direction="Column" AlignItems="Center">
             </FlexLayout>
+        
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

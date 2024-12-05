@@ -31,8 +31,10 @@
                     <Label Text="Explanation of assignment details, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris in libero fermentum, hendrerit ex vel, interdum quam. Duis finibus maximus dictum. Integer ut egestas quam. Donec fringilla venenatis fermentum. Ut dolor nibh, lacinia vitae justo vel, pretium volutpat nulla. Integer vitae elementum nibh."
                    FontSize="Caption"
                    TextColor="Black"
-                   Padding="0,0,0,10"
-                   LineBreakMode="WordWrap" />
+                           Margin="0,0,0,0"
+                   Padding="10,10,10,10"
+                   LineBreakMode="WordWrap"
+                           BackgroundColor="WhiteSmoke"/>
 
 
                     <BoxView HeightRequest="1"
@@ -44,8 +46,8 @@
             </Frame>
 
             <Label Text="Popular Submissions"
-               FontSize="Title"
-               Padding="15,8,0,0" />
+               FontSize="Medium"
+               Padding="15,0,0,0" />
 
             <ScrollView Orientation="Horizontal">
                 <FlexLayout
@@ -65,16 +67,16 @@
                      />
             
             <Label Text="New"
-               FontSize="Title"
+               FontSize="Medium"
             Padding="15,8,0,0" />            
 
-            <ScrollView Orientation="Horizontal">
+            <ScrollView Orientation="Vertical">
                 <FlexLayout                     
                  x:Name="NewSubmissions"
                  Wrap="Wrap"
-                 Direction="Column"
-                 JustifyContent="Start"
-                 AlignItems="Start"
+                 Direction="Row"
+                 JustifyContent="SpaceEvenly"
+                 AlignItems="Center"
                  Margin="10">
                 </FlexLayout>
             </ScrollView>

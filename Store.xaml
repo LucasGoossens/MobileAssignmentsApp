@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.Models.Store"
+             Title="Store">
+    <VerticalStackLayout>
+        <FlexLayout Margin="40,0,0,0">
+            <Label Text="99" FontSize="38" FontAttributes="Bold"/>
+            <Image Margin="3,0,0,0" Source="star_icon"/>
+        </FlexLayout>
+        <Label    Text="Current Balance" FontSize="Caption" Margin="40,-5,0,15"/>
+        <Border 
+    Stroke="#000000" 
+    StrokeThickness="0" 
+    WidthRequest="300"
+    HeightRequest="250"            
+    StrokeShape="RoundRectangle 20,20,20,20">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#407657" Offset="0.0" />
+                    <GradientStop Color="#78DCA1" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <VerticalStackLayout>
+                <!-- Image -->
+                <Image Source="star" WidthRequest="125" HorizontalOptions="Center" />
+
+                <!-- Frame inheriting Border's width -->
+                <Frame 
+            BackgroundColor="#F0F0F0" 
+            CornerRadius="0" 
+            Padding="0,0,0,75"
+            Margin="0,0,0,0" 
+            HorizontalOptions="Fill"
+                    BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label                             
+                    Text="1 Point" 
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="FillAndExpand" 
+                    TextColor="Grey" />
+
+                        <Label                             
+                    Text="&#x20AC;1,-" 
+                    FontSize="28"
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="FillAndExpand" 
+                    TextColor="Black" />
+
+                        <Button 
+                    Text="Buy" 
+                    BackgroundColor="CornflowerBlue" 
+                    TextColor="White"                       
+                    FontSize="12"
+                    FontAttributes="Bold"
+                    FontAutoScalingEnabled="True"
+                    HorizontalOptions="Center"
+                    WidthRequest="100"    
+                            HeightRequest="35"
+                    VerticalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Border>
+
+        <Border 
+Stroke="#000000" 
+StrokeThickness="0" 
+WidthRequest="300"
+HeightRequest="270"            
+StrokeShape="RoundRectangle 20,20,20,20"
+            Margin="0,10,0,0">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="1,0" EndPoint="0,1">
+                    <GradientStop Color="#407657" Offset="0.0" />
+                    <GradientStop Color="#DCC578" Offset="1.0" />
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <VerticalStackLayout>
+                <!-- Image -->
+                <Image Source="stars_test" WidthRequest="125" HeightRequest="135" HorizontalOptions="Center" />
+
+                <!-- Frame inheriting Border's width -->
+                <Frame 
+        BackgroundColor="#F0F0F0" 
+        CornerRadius="0" 
+        Padding="0,10,0,75"
+        Margin="0,5,0,0" 
+        HorizontalOptions="Fill"
+                BorderColor="Transparent">
+                    <VerticalStackLayout>
+                        <Label                             
+                Text="10 Points" 
+                FontSize="24"
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                VerticalOptions="FillAndExpand" 
+                TextColor="Grey" />
+
+                        <FlexLayout Direction="Row" JustifyContent="Center">
+                            <Label                             
+                Text="&#x20AC;10,-"
+                            TextDecorations="Strikethrough"                            
+                           Padding="0,5,2,0"
+                FontSize="24"                
+                HorizontalOptions="Center"
+                VerticalOptions="FillAndExpand" 
+                TextColor="Black" />
+
+                            <Label                             
+                    Text="&#x20AC;7,-"                    
+                    FontSize="32"
+                           Padding="10,0,0,0" 
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    VerticalOptions="FillAndExpand" 
+                    TextColor="Red" />
+                        </FlexLayout>
+
+                        <Button 
+                        Text="Buy" 
+                        BackgroundColor="CornflowerBlue" 
+                        TextColor="White"                       
+                        FontSize="12"
+                        FontAttributes="Bold"
+                        FontAutoScalingEnabled="True"
+                        HorizontalOptions="Center"
+                        WidthRequest="100"    
+                                HeightRequest="35"
+                        VerticalOptions="Center" />
+                    </VerticalStackLayout>
+                </Frame>
+            </VerticalStackLayout>
+        </Border>
+
+
+    </VerticalStackLayout>
+</ContentPage>

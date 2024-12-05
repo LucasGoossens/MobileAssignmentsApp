@@ -1,3 +1,4 @@
+using Microsoft.Maui.Controls.Shapes;
 namespace InleverenWeek4MobileDev;
 
 public partial class AllChallenges : ContentPage
@@ -7,16 +8,30 @@ public partial class AllChallenges : ContentPage
         InitializeComponent();
         for (int i = 0; i < 4; i++)
         {
-            var boxView = new BoxView
+            var image = new Image
             {
-                Color = Colors.CornflowerBlue,
-                CornerRadius = 10,
+                Source = "trending_clownfish", 
+                Aspect = Aspect.AspectFill 
+            };
+
+            var border = new Border
+            {
+                Stroke = Colors.CornflowerBlue,
+                StrokeThickness = 2,
+                BackgroundColor = Colors.LightGray,
+                StrokeShape = new RoundRectangle
+                    {
+                        CornerRadius = new CornerRadius(5, 5, 5, 5)
+                    },
                 WidthRequest = 180,
                 HeightRequest = 300,
-                Margin = new Thickness(3, 3, 3, 6)
+                Margin = new Thickness(3, 3, 3, 6),
+                Content = image 
             };
-            TrendingChallengesFlexLayoutAllChallenges.Children.Add(boxView);
+
+            TrendingChallengesFlexLayoutAllChallenges.Children.Add(border);
         }
+
 
         for (int i = 0; i < 6; i++)
         {

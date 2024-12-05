@@ -4,36 +4,56 @@
              x:Class="InleverenWeek4MobileDev.Frontpage"
              Title="Frontpage">
 
-    <ScrollView Orientation="Vertical">
-        <VerticalStackLayout>
-            <Label Text="Trending Challenges"
-                   FontSize="Title"
-                   Padding="10,10,0,0" />
+    <Grid>
+        <!-- Define the grid structure -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <!-- Scrollable Content -->
+            <RowDefinition Height="Auto" />
+            <!-- Navbar -->
+        </Grid.RowDefinitions>
 
-            <FlexLayout
-                Wrap="Wrap"
-                x:Name="TrendingChallengesFlexLayout"
-                Direction="Row"
-                JustifyContent="Start"
-                AlignItems="Start"
-                Margin="10">
-            </FlexLayout>
+        <!-- Scrollable Content -->
+        <ScrollView Grid.Row="0" Orientation="Vertical">
+            <VerticalStackLayout>
+                <Label Text="Trending Challenges"
+                       FontSize="Title"
+                       Padding="10,10,0,0" />
 
-            <Label Text="Recent Challenges"
-                   FontSize="Title"
-                Padding="10,10,0,0" />
-
-            <ScrollView>
-                <FlexLayout                     
-                     x:Name="RecentChallengesFlexlayout"
-                     Direction="Column"
-                     JustifyContent="Start"
-                     AlignItems="Center"
-                     Margin="10">
+                <FlexLayout
+                    Wrap="Wrap"
+                    x:Name="TrendingChallengesFlexLayout"
+                    Direction="Row"
+                    JustifyContent="Start"
+                    AlignItems="Start"
+                    Margin="10">
                 </FlexLayout>
-            </ScrollView>
 
+                <Label Text="Recent Challenges"
+                       FontSize="Title"
+                       Padding="10,10,0,0" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+                <ScrollView>
+                    <FlexLayout                     
+                         x:Name="RecentChallengesFlexlayout"
+                         Direction="Column"
+                         JustifyContent="Start"
+                         AlignItems="Center"
+                         Margin="10">
+                    </FlexLayout>
+                </ScrollView>
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <Border Grid.Row="1" BackgroundColor="GhostWhite" Padding="10" StrokeShape="RoundRectangle 10,10,0,0">
+            <Border.Shadow>
+                <Shadow Brush="Black" Opacity=".3" Offset="0,-5" Radius="50" />
+            </Border.Shadow>
+            <FlexLayout JustifyContent="SpaceBetween" Direction="Row">
+                <Button Text="Shop" Clicked="Shop" HorizontalOptions="End" />
+                <Button Text="/\0" HorizontalOptions="StartAndExpand" />
+                <Button Text="Profile" Clicked="Profile" HorizontalOptions="StartAndExpand" />
+            </FlexLayout>
+        </Border>
+    </Grid>
 </ContentPage>

@@ -20,7 +20,7 @@
             </FlexLayout>
             </ScrollView>
 
-            <Label Text="Recent Challenges"
+            <Label Text="New"
                    FontSize="Title"
                 Padding="10,10,0,0" />
 
