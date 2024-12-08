@@ -6,7 +6,7 @@ public partial class Assignments : ContentPage
 	{
 		InitializeComponent();
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
             var frame = new Frame
             {
@@ -38,7 +38,7 @@ public partial class Assignments : ContentPage
                 if (tappedFrame != null)
                 {
 
-                    await Navigation.PushAsync(new AssignmentSubmissions());
+                    await Navigation.PushAsync(new AssignmentTabs());
                 }
             };
 
@@ -46,7 +46,7 @@ public partial class Assignments : ContentPage
             UnlockedAssignments.Children.Add(frame);
         }
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
             var frame = new Frame
             {
@@ -77,7 +77,7 @@ public partial class Assignments : ContentPage
                 var tappedFrame = sender as Frame;
                 if (tappedFrame != null)
                 {
-                    await Navigation.PushAsync(new AssignmentSubmissions());
+                    await Navigation.PushAsync(new AssignmentTabs());
                 }
             };
 
@@ -86,7 +86,7 @@ public partial class Assignments : ContentPage
         }
 
 
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 4; i++)
         {
             var frame = new Frame
             {

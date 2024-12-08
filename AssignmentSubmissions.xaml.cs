@@ -30,8 +30,8 @@ public partial class AssignmentSubmissions : ContentPage
                 var tappedFrame = sender as Frame;
                 if (tappedFrame != null)
                 {
-                    // Navigate or handle tap event
-                    // await Navigation.PushAsync(new PopularSubmissionDetailsPage());
+                    
+                    await Navigation.PushAsync(new Submission());
                 }
             };
             frame.Content = image;
@@ -62,8 +62,7 @@ public partial class AssignmentSubmissions : ContentPage
                 var tappedFrame = sender as Frame;
                 if (tappedFrame != null)
                 {
-                    // Navigate or handle tap event
-                    // await Navigation.PushAsync(new PopularSubmissionDetailsPage());
+                    await Navigation.PushAsync(new Submission());
                 }
             };
             frame.Content = image;

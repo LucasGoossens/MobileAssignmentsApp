@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:local="clr-namespace:InleverenWeek4MobileDev"
+             x:Class="InleverenWeek4MobileDev.AssignmentTabs"
+             Title="AssignmentTabs"                            
+            >
+
+    <ContentPage Title="DESCRIPTION">
+        <VerticalStackLayout>
+            <Image Source="street" HeightRequest="450" Aspect="AspectFill"/>
+            <Label Text="STREET PHOTOGRAPHY" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" Padding="0,3,0,2" />
+            <BoxView BackgroundColor="LightGrey" WidthRequest="350" HeightRequest="1"/>
+            <Label FontSize="Body" Padding="15,0,15,0" Text="This challenge involves capturing candid moments in urban settings, focusing on storytelling, composition, and the use of natural light. Participants must navigate the unpredictable nature of street scenes, balancing technical skills with creativity. The goal is to document authentic slices of life, from dynamic cityscapes to intimate human interactions, while respecting privacy and maintaining ethical boundaries."/>
+
+        </VerticalStackLayout>
+    </ContentPage>
+
+    <ContentPage Title="GUIDE">
+        <ScrollView>
+            <VerticalStackLayout Spacing="15" Padding="10">
+                <!-- Technique Section -->
+                <Label Text="TECHNIQUE" FontSize="Title" FontAttributes="Bold" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="• Utilize Pro Mode on Your Phone: " FontAttributes="Bold" />
+                            <Span Text="Unlock manual settings like ISO, shutter speed, and focus to have more control over your shots and adapt to changing light conditions in the street." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="• Master Composition: " FontAttributes="Bold" />
+                            <Span Text="Use the rule of thirds, leading lines, or symmetry to frame compelling stories. Pay attention to foreground and background elements for added depth." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="• Leverage Natural Light: " FontAttributes="Bold" />
+                            <Span Text="Shoot during golden or blue hours for soft, dramatic lighting. For harsh midday sun, find shadows or diffused light to balance exposure." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Border BackgroundColor="LightGray" Padding="10,10,10,10">
+                    <VerticalStackLayout>
+                        <Label Text="PRO TIPS" FontSize="Title" FontAttributes="Bold" />
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="• Anticipate the Moment: " FontAttributes="Bold" />
+                                    <Span Text="Observe patterns and movements to predict when an interesting scene might unfold, ensuring you're ready to capture it." />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Label>
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <Span Text="• Shoot Discreetly: " FontAttributes="Bold" />
+                                    <Span Text="Hold your phone at waist level or use a wide-angle lens to capture candid moments without drawing attention, preserving authenticity." />
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                    </VerticalStackLayout>
+                </Border>
+
+                <!-- Location Section -->
+                <Label Text="LOCATION" FontSize="Title" FontAttributes="Bold" />
+                <Label>
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Choose a bustling urban area like a city center, market, or busy street corner. " />
+                            <Span Text="Look for diverse activities, unique architecture, and vibrant interactions that provide a variety of storytelling opportunities." />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage>
+
+
+    <local:AssignmentSubmissions Title="SUBMISSIONS"/>
+
+</TabbedPage>

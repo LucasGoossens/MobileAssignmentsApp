@@ -6,4 +6,14 @@ public partial class Submission : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private void ProfileClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void CommentsClicked(object sender, EventArgs e)
+    {
+
+    }
 }

@@ -3,84 +3,94 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InleverenWeek4MobileDev.Profile"
              Title="Profile">
-        <ScrollView Orientation="Vertical">
-    <VerticalStackLayout>
-        <Border BackgroundColor="Gray"
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+            <Border BackgroundColor="Gray"
                 HorizontalOptions="FillAndExpand"
                 HeightRequest="120"
                 ZIndex="1"
                 Margin="0,0,0,-50"
                 />
-        <Ellipse Fill="WhiteSmoke"                                   
-             Stroke="White"
-             StrokeThickness="4"
-             WidthRequest="150"
-             HeightRequest="150"                 
-             HorizontalOptions="Center" 
-                 Margin="0,-45,0,0"
-                 
-                 ZIndex="2"/>
-        <Border BackgroundColor="White"                
+            <Border
+                StrokeShape="Ellipse"
+    WidthRequest="150"
+    HeightRequest="150"
+    StrokeThickness="3"
+    Stroke="White"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    BackgroundColor="Transparent"    
+                Margin="0,-45,0,0"
+    ZIndex="2">
+                <Image
+        Source="ocean"
+        WidthRequest="150"
+        HeightRequest="150"
+        Aspect="AspectFill" />
+            </Border>
+
+
+            <Border BackgroundColor="White"                
         HorizontalOptions="FillAndExpand"
                 Margin="0,-55,0,0"
                 HeightRequest="120">
-            <VerticalStackLayout>
-                <Label HorizontalOptions="Center" Padding="0,60,0,0" FontSize="Title" FontAttributes="Bold" Text="User Profilename"/>
-                <Label HorizontalOptions="Center"  FontSize="Caption" Text="MEMBER"/>
-            </VerticalStackLayout>            
-        </Border>
-        <Border>
-            <Grid ColumnDefinitions="*,Auto,*,Auto,*" HeightRequest="75" VerticalOptions="CenterAndExpand">
-                
-                <FlexLayout Grid.Column="0" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label Text="99" FontSize="28" FontAttributes="Bold"  HorizontalOptions="Center" />
-                    <Label Text="COMPLETED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
-                </FlexLayout>
+                <VerticalStackLayout>
+                    <Label HorizontalOptions="Center" Padding="0,60,0,0" FontSize="Title" FontAttributes="Bold" Text="User Profilename"/>
+                    <Label HorizontalOptions="Center"  FontSize="Caption" Text="MEMBER"/>
+                </VerticalStackLayout>
+            </Border>
+            <Border>
+                <Grid ColumnDefinitions="*,Auto,*,Auto,*" HeightRequest="75" VerticalOptions="CenterAndExpand">
+
+                    <FlexLayout Grid.Column="0" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="99" FontSize="28" FontAttributes="Bold"  HorizontalOptions="Center" />
+                        <Label Text="COMPLETED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
+                    </FlexLayout>
 
 
-                <BoxView BackgroundColor="#b3b3b3"  Grid.Column="1" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
+                    <BoxView BackgroundColor="#b3b3b3"  Grid.Column="1" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
 
 
-                <FlexLayout Grid.Column="2" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
-                    <Label Text="CREATED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold" />
-                </FlexLayout>
-
-                
-                <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
+                    <FlexLayout Grid.Column="2" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Label Text="CREATED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold" />
+                    </FlexLayout>
 
 
-                <FlexLayout Grid.Column="4" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
-                    <Label Text="LIKES" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
-                </FlexLayout>
-            </Grid>
-        </Border>
+                    <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
 
-        <Label Text="Created Challenges" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
+
+                    <FlexLayout Grid.Column="4" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                        <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
+                        <Label Text="LIKES" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
+                    </FlexLayout>
+                </Grid>
+            </Border>
+
+            <Label Text="Created Challenges" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
             <ScrollView Orientation="Horizontal">
-        <HorizontalStackLayout>
-            <FlexLayout
+                <HorizontalStackLayout>
+                    <FlexLayout
                 x:Name="ProfileCreatedChallenges"
                 />
 
-        </HorizontalStackLayout>
+                </HorizontalStackLayout>
             </ScrollView>
 
-        <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="1" Background="#b3b3b3" WidthRequest="375" HorizontalOptions="CenterAndExpand" />
+            <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="1" Background="#b3b3b3" WidthRequest="375" HorizontalOptions="CenterAndExpand" />
 
 
-        <Label Text="Recent Submissions" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
-        <ScrollView Orientation="Horizontal">
-            <HorizontalStackLayout>
-                <FlexLayout
+            <Label Text="Recent Submissions" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
+            <ScrollView Orientation="Horizontal">
+                <HorizontalStackLayout>
+                    <FlexLayout
                 x:Name="ProfileRecentSubmissions"
                 />
 
-            </HorizontalStackLayout>
-        </ScrollView>
+                </HorizontalStackLayout>
+            </ScrollView>
 
-    </VerticalStackLayout>
-        </ScrollView>
+        </VerticalStackLayout>
+    </ScrollView>
 
 </ContentPage>

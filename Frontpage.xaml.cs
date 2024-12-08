@@ -1,4 +1,5 @@
 using InleverenWeek4MobileDev.Models;
+using Microsoft.Maui.Controls.Shapes;
 
 namespace InleverenWeek4MobileDev;
 
@@ -10,34 +11,43 @@ public partial class Frontpage : ContentPage
 
         for (int i = 0; i < 4; i++)
         {
-            var boxView = new BoxView
+            var border = new Border
             {
-                Color = Colors.CornflowerBlue,
-                CornerRadius = 10,
+                BackgroundColor = Colors.CornflowerBlue,
+                Stroke = Colors.Transparent, // No border outline
+                StrokeShape = new RoundRectangle { CornerRadius = new CornerRadius(10) },
                 WidthRequest = 150,
                 HeightRequest = 175,
                 Margin = new Thickness(6, 3, 3, 6)
             };
+
+            var image = new Image
+            {
+                Source = i % 3 == 0 ? "trending_clownfish" : "clownfish",
+                Aspect = Aspect.AspectFill,
+                WidthRequest = 150,
+                HeightRequest = 175
+            };
+
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += async (sender, args) =>
             {
-                var tappedBoxView = sender as BoxView;
-                if (tappedBoxView != null)
-                {
-                    // Navigate to the AllChallenges page
-                    await Navigation.PushAsync(new AllChallenges());               
-                }
+                // Navigate to the AllChallenges page
+                await Navigation.PushAsync(new AllChallenges());
             };
 
-            boxView.GestureRecognizers.Add(tapGestureRecognizer);
-            TrendingChallengesFlexLayout.Children.Add(boxView);
+            border.Content = image;
+            border.GestureRecognizers.Add(tapGestureRecognizer);
+
+            TrendingChallengesFlexLayout.Children.Add(border);
+
         }
 
         for (int i = 0; i < 6; i++)
         {
             var boxView = new BoxView
             {                
-                Color = Colors.AliceBlue,
+                Color = Colors.BlueViolet,
                 CornerRadius = 10,
                 WidthRequest = 375,
                 HeightRequest = 50,
