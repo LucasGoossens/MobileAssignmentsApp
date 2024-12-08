@@ -12,8 +12,8 @@ public partial class Submission : ContentPage
 
     }
 
-    private void CommentsClicked(object sender, EventArgs e)
+    private async void CommentsClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new Comments());
     }
 }

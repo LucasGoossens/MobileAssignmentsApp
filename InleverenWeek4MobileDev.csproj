@@ -79,6 +79,9 @@
 	  <MauiXaml Update="AssignmentTabs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Comments.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Frontpage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

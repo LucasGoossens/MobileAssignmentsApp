@@ -23,8 +23,10 @@
 
             
             <ImageButton
+                BackgroundColor="White"
+                Opacity=".8"
                 Clicked="CommentsClicked"
-                Source="stars_test"
+                Source="comment"
                    WidthRequest="50"
                    HeightRequest="50"
                    HorizontalOptions="End"
