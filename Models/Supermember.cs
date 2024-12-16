@@ -8,5 +8,6 @@ namespace InleverenWeek4MobileDev.Models
 {
     public class Supermember
     {
+        public List<Challenge> CreatedChallenges { get; set; }
     }
 }

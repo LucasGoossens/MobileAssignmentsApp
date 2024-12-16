@@ -61,7 +61,7 @@ public partial class Frontpage : ContentPage
                 if (tappedBoxView != null)
                 {
                     // Navigate to the AllChallenges page
-                    await Navigation.PushAsync(new Assignments());
+                    await Navigation.PushAsync(new Assignments(0));
                 }
             };
 

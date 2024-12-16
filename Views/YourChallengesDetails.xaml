@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.Views.YourChallengesDetails"
+             Title="Challenge Details">
+    <ContentPage.Content>
+        <ScrollView>
+            <VerticalStackLayout Padding="20" Spacing="20">
+                <!-- Challenge Details -->
+                <Label Text="{Binding Challenge.Title}" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       TextColor="Black" />
+                <Label Text="{Binding Challenge.Description}" 
+                       FontSize="Medium" />
+
+                <!-- Assignments Section -->
+                <Label Text="Create a New Assignment" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" />
+                <VerticalStackLayout Spacing="10">
+                    <!-- Assignment Description Input -->
+                    <Entry Placeholder="Assignment Title" 
+                           Text="{Binding NewAssignmentTitle}" />
+
+                    <Entry Placeholder="Assignment Description" 
+                           Text="{Binding NewAssignmentDescription}" />
+
+                    <Label Text="Guides" FontSize="Medium" FontAttributes="Bold" />
+
+                        <!-- Guide 1 -->
+                        <Entry Placeholder="Guide Title 1" 
+                       Text="{Binding GuideTitle1}" />
+                        <Entry Placeholder="Guide Description 1" 
+                       Text="{Binding GuideDescription1}" />
+
+                        <!-- Guide 2 -->
+                        <Entry Placeholder="Guide Title 2" 
+                       Text="{Binding GuideTitle2}" />
+                        <Entry Placeholder="Guide Description 2" 
+                       Text="{Binding GuideDescription2}" />
+
+                        <!-- Guide 3 -->
+                        <Entry Placeholder="Guide Title 3" 
+                       Text="{Binding GuideTitle3}" />
+                        <Entry Placeholder="Guide Description 3" 
+                       Text="{Binding GuideDescription3}" />
+                        <!-- Submit Button -->
+                    
+                    <Button Text="Add Assignment"
+                            Command="{Binding AddAssignmentCommand}" />
+                </VerticalStackLayout>
+
+                <!-- List of Existing Assignments -->
+                <Label Text="Existing Assignments" 
+                       FontSize="Large" 
+                       FontAttributes="Bold" 
+                       Margin="0,20,0,0" />
+                <!--<CollectionView ItemsSource="{Binding Challenge.Assignments}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Description}" 
+                                       FontSize="Medium" />
+                            </StackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>-->
+                <CollectionView ItemsSource="{Binding Challenge.Assignments}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <VerticalStackLayout Padding="10" Spacing="5">
+                                <!-- Assignment Title -->
+                                <Label Text="{Binding Title}" FontAttributes="Bold" />
+
+                                <!-- Assignment Description -->
+                                <Label Text="{Binding Description}" />
+
+                                <!-- Guides Section -->
+                                <Label Text="Guides:" FontAttributes="Italic" />
+
+                                <!-- Loop through Guides -->
+                                <CollectionView ItemsSource="{Binding Guides}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <HorizontalStackLayout Spacing="10">
+                                                <Label Text="{Binding Key}" FontAttributes="Bold" />
+                                                <Label Text="{Binding Value}" />
+                                            </HorizontalStackLayout>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </VerticalStackLayout>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

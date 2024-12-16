@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.Views.CreateChallenge"
+             xmlns:viewmodel="clr-namespace:InleverenWeek4MobileDev.ViewModels"
+             
+             Title="CreateChallenge">
+    <VerticalStackLayout>
+        <Label 
+        Text="Create new Challenge"
+        Margin="20,10,20,0" 
+        Padding="10,10,10,10"
+        FontSize="Title"
+        FontAttributes="Bold"
+        HorizontalOptions="Center" />
+
+    <Entry 
+        Placeholder="Enter Title" 
+        PlaceholderColor="Gray"                
+        Keyboard="Email"        
+        FontSize="16"
+        BackgroundColor="#EDEDED"
+        Margin="20,10,20,0" 
+        TextColor="Black"
+        Text="{Binding Title}"/>
+
+    <Entry 
+        Placeholder="Describe the theme of the challenge"
+        PlaceholderColor="Gray"           
+        FontSize="16"
+        BackgroundColor="#EDEDED"        
+        Margin="20,10,20,0" 
+        TextColor="Black"
+        Text="{Binding Description}"/>
+
+    <Button 
+        Text="Submit"
+        Command="{Binding SubmitChallengeCommand}"
+        BackgroundColor="DarkBlue"
+        TextColor="White"
+        FontAttributes="Bold"
+        CornerRadius="5"
+        Margin="20,10,20,10" />
+    </VerticalStackLayout>
+
+</ContentPage>

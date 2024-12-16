@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.AllChallenges"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
+             Title="AllChallenges">
+
+
+    <ContentPage.BindingContext>
+        <local:AllChallengesViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView Orientation="Vertical">
+        <VerticalStackLayout>
+            <Button
+    Text="Create Challenge"
+    Command="{Binding NavigateToCreateChallengeCommand}"
+    BackgroundColor="CornflowerBlue"
+    TextColor="White"
+    CornerRadius="10"
+    FontAttributes="Bold"
+    HorizontalOptions="Center"
+    VerticalOptions="Center" />
+
+            <Button
+Text="Your Challenges"
+Command="{Binding NavigateToYourChallengesCommand}"
+BackgroundColor="CornflowerBlue"
+TextColor="White"
+CornerRadius="10"
+FontAttributes="Bold"
+HorizontalOptions="Center"
+VerticalOptions="Center" />
+
+
+            <Label Text="Trending Challenges"
+                   FontSize="Title"
+                   Padding="10,10,0,0" />
+
+            <!--<ScrollView Orientation="Horizontal">
+            
+            </ScrollView>-->
+            <ScrollView Orientation="Horizontal">
+                <FlexLayout
+    x:Name="TrendingChallengesFlexLayoutAllChallenges"
+    Direction="Row"
+    JustifyContent="Start"
+    AlignItems="Start"
+    Margin="10">
+
+                    <CollectionView
+    ItemsSource="{Binding TrendingChallenges}"
+    ItemsLayout="HorizontalList">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                Stroke="CornflowerBlue"
+                StrokeThickness="2"
+                BackgroundColor="LightGray"
+                WidthRequest="180"
+                HeightRequest="300"
+                Margin="3,3,3,6">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="5" />
+                                    </Border.StrokeShape>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsCommand}"
+                        CommandParameter="{Binding Id}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </FlexLayout>
+            </ScrollView>
+
+
+            <Label Text="New"
+                   FontSize="Title"
+                Padding="10,10,0,0" />
+
+            <ScrollView Orientation="Horizontal">
+                <FlexLayout                     
+                     x:Name="NewChallengesFlexlayoutAllChallenges"
+                     Direction="Row"
+                     JustifyContent="Start"
+                     AlignItems="Start"
+                     Margin="10">
+                </FlexLayout>
+            </ScrollView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

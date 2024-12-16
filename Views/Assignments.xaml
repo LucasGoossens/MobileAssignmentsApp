@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.Assignments"
+             Title="Assignments">
+
+    <ScrollView Orientation="Vertical">
+    <VerticalStackLayout>
+
+
+        <Grid>
+            <Image Source="ocean.jpg" />
+
+            <Label Text="{Binding Challenge.Title}"
+               HorizontalOptions="Center"
+               VerticalOptions="EndAndExpand"
+               TextColor="White"
+               FontSize="24"
+               BackgroundColor="#88000000"
+               Padding="10"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center" />
+
+        </Grid>
+            <Label Text="{Binding Challenge.Description}"
+   HorizontalOptions="Center"
+   VerticalOptions="EndAndExpand"
+   TextColor="White"
+   FontSize="16"
+   BackgroundColor="#88000000"
+   Padding="10"
+   HorizontalTextAlignment="Center"
+   VerticalTextAlignment="Center" />
+
+            <Label Text="Assignments" FontSize="Title" FontAttributes="Bold" Padding="10" />
+            <Label Text="Unlocked" FontSize="24" Padding="10,0,0,0" />
+            <CollectionView ItemsSource="{Binding UnlockedAssignments}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#D3F5D9"
+                               CornerRadius="10"
+                               WidthRequest="340"
+                               HeightRequest="50"
+                               Margin="0,6,0,0"
+                               Padding="10">
+                            
+                            <Label Text="{Binding Title}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   TextColor="Black"
+                                   FontSize="16" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Completed Assignments -->
+            <Label Text="Completed" FontSize="24" Padding="10,10,0,0" />
+            <CollectionView ItemsSource="{Binding CompletedAssignments}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="#F0FAB9"
+                               CornerRadius="10"
+                               WidthRequest="340"
+                               HeightRequest="50"
+                               Margin="0,6,0,0"
+                               Padding="10">
+                            <Label Text="{Binding Title}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   TextColor="Black"
+                                   FontSize="16" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- Locked Assignments -->
+            <Label Text="Locked" FontSize="24" Padding="10,0,0,0" />
+            <CollectionView ItemsSource="{Binding LockedAssignments}" Margin="10">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BackgroundColor="Gray"
+                               CornerRadius="10"
+                               WidthRequest="340"
+                               HeightRequest="50"
+                               Margin="0,6,0,0"
+                               Padding="10">
+                            <Label Text="{Binding Title}"
+                                   VerticalOptions="Center"
+                                   HorizontalOptions="Start"
+                                   TextColor="Black"
+                                   FontSize="16" />
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
