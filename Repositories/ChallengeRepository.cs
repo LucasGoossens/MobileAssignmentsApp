@@ -64,5 +64,15 @@ namespace InleverenWeek4MobileDev.Repositories
             return challenge;
         }
 
+
+        public async void DeleteChallenge(int challengeId)
+        {
+            var challenge = connection.Find<Challenge>(challengeId);
+            if (challenge != null)
+            {
+                connection.Delete(challenge);
+            }
+        }
+
     }
 }

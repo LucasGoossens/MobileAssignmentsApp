@@ -38,5 +38,10 @@ namespace InleverenWeek4MobileDev.Models
         {
 
         }
+
+        public void SetHeaderImage()
+        {
+            // hier dan de image van de meest populaire submission als header?
+        }
     }
 }

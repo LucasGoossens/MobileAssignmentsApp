@@ -46,6 +46,11 @@ namespace InleverenWeek4MobileDev.Repositories
             return assignments;
         }
 
+        public Assignment GetAssignmentById(int assignmentId)
+        {
+            return connection.Table<Assignment>().Where(a => a.Id == assignmentId).FirstOrDefault();
+        }
+
 
         public void UpdateAssignment(Assignment assignment)
         {

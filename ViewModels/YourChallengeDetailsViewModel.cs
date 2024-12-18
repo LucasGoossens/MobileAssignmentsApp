@@ -74,6 +74,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             var newAssignment = new Assignment
             {
                 ChallengeId = Challenge.Id, // Assuming Challenge is bound and available
+                Title = newAssignmentTitle,
                 Description = newAssignmentDescription,
                 Guides = guides
             };

@@ -36,6 +36,14 @@ namespace InleverenWeek4MobileDev.ViewModels
         {            
             await Application.Current.MainPage.Navigation.PushAsync(new TestAssignments());
         }
+
+        [RelayCommand]
+        public async void DeleteChallenge(Challenge challenge)
+        {
+            ChallengeRepository challengeRepository = new ChallengeRepository();
+            challengeRepository.DeleteChallenge(challenge.Id);
+
+        }
     }
 
 }

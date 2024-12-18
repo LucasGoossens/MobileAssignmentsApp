@@ -32,27 +32,33 @@
    HorizontalTextAlignment="Center"
    VerticalTextAlignment="Center" />
 
-            <Label Text="Assignments" FontSize="Title" FontAttributes="Bold" Padding="10" />
-            <Label Text="Unlocked" FontSize="24" Padding="10,0,0,0" />
             <CollectionView ItemsSource="{Binding UnlockedAssignments}" Margin="10">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Frame BackgroundColor="#D3F5D9"
-                               CornerRadius="10"
-                               WidthRequest="340"
-                               HeightRequest="50"
-                               Margin="0,6,0,0"
-                               Padding="10">
-                            
+                   CornerRadius="10"
+                   WidthRequest="340"
+                   HeightRequest="50"
+                   Margin="0,6,0,0"
+                   Padding="10">
+                            <!-- Content inside the Frame -->
                             <Label Text="{Binding Title}"
-                                   VerticalOptions="Center"
-                                   HorizontalOptions="Start"
-                                   TextColor="Black"
-                                   FontSize="16" />
+                       VerticalOptions="Center"
+                       HorizontalOptions="Start"
+                       TextColor="Black"
+                       FontSize="16" />
+
+                            <!-- Adding TapGestureRecognizer to make the Frame clickable -->
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsTabCommand}"
+                        CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
+
 
             <!-- Completed Assignments -->
             <Label Text="Completed" FontSize="24" Padding="10,10,0,0" />
@@ -70,6 +76,11 @@
                                    HorizontalOptions="Start"
                                    TextColor="Black"
                                    FontSize="16" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsTabCommand}"
+CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
@@ -91,6 +102,11 @@
                                    HorizontalOptions="Start"
                                    TextColor="Black"
                                    FontSize="16" />
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer 
+Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsTabCommand}"
+CommandParameter="{Binding Id}" />
+                            </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>

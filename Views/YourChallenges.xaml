@@ -28,6 +28,11 @@
         CommandParameter="{Binding}" />-->
 
 
+                            <Button Text="Delete"
+Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteChallengeCommand}"
+CommandParameter="{Binding}" />
+
+
 
                         </StackLayout>
                     </DataTemplate>

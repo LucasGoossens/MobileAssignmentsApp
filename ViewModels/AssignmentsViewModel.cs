@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
 using System.Collections.ObjectModel;
@@ -37,6 +38,9 @@ public partial class AssignmentsViewModel : ObservableObject
         for (int i = 0; i < Challenge.Assignments.Count; i++)
         {
             Challenge.Assignments[i].Status = statuses[i % statuses.Length];
+            System.Diagnostics.Debug.WriteLine(Challenge.Assignments[i].Title);
+            System.Diagnostics.Debug.WriteLine(Challenge.Assignments[i].Description);
+
             switch (Challenge.Assignments[i].Status)
             {
                 case "Locked":
@@ -51,23 +55,34 @@ public partial class AssignmentsViewModel : ObservableObject
             }
 
         }
-
-        //// Mock Challenge
-        //Challenge = new Challenge
-        //{
-        //    Description = "This is a sample challenge with various assignments.",
-        //    Assignments = new List<Assignment>
-        //    {
-        //        new Assignment { Title = "Unlocked Assignment 1", Description = "This is unlocked 1" },
-        //        new Assignment { Title = "Unlocked Assignment 2", Description = "This is unlocked 2" },
-        //        new Assignment { Title = "Completed Assignment 1", Description = "This is completed 1" },
-        //        new Assignment { Title = "Locked Assignment 1", Description = "This is locked 1" }
-        //    }
-        //};
-
-        //// Separate Assignments into categories
-        //UnlockedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Unlocked")));
-        //CompletedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Completed")));
-        //LockedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Locked")));
     }
+
+    [RelayCommand]
+    public async void NavigateToAssignmentsTab(object parameter)
+    {
+        if (parameter is int Id)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new AssignmentTabs(Id));
+        }
+    }
+
+
+    //// Mock Challenge
+    //Challenge = new Challenge
+    //{
+    //    Description = "This is a sample challenge with various assignments.",
+    //    Assignments = new List<Assignment>
+    //    {
+    //        new Assignment { Title = "Unlocked Assignment 1", Description = "This is unlocked 1" },
+    //        new Assignment { Title = "Unlocked Assignment 2", Description = "This is unlocked 2" },
+    //        new Assignment { Title = "Completed Assignment 1", Description = "This is completed 1" },
+    //        new Assignment { Title = "Locked Assignment 1", Description = "This is locked 1" }
+    //    }
+    //};
+
+    //// Separate Assignments into categories
+    //UnlockedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Unlocked")));
+    //CompletedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Completed")));
+    //LockedAssignments = new ObservableCollection<Assignment>(Challenge.Assignments.Where(a => a.Title.Contains("Locked")));
 }
+
