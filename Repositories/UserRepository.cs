@@ -12,7 +12,7 @@ namespace InleverenWeek4MobileDev.Repositories
     public class UserRepository
     {
 
-        SQLiteConnection connection;
+        public SQLiteConnection connection;
         public string? statusMessage { get; set; }
 
         public UserRepository()
@@ -36,23 +36,41 @@ namespace InleverenWeek4MobileDev.Repositories
             }
             else
             {
+                System.Diagnostics.Debug.WriteLine("Hello ." );
                 result = connection.Update(member);
                 statusMessage = string.Format("{0} record(s) updated [Name: {1})", result, member.Name);
             }
         }
 
 
-        public bool LoginUser(string username, string password)
-        {
-            var loggedInUser = connection.Table<User>()
-                .Where(u => u.Name == username && u.Password == password);
+        public int LoginUser(string username, string password)
+        {            
+            var users = connection.Table<User>();           
 
-            if(loggedInUser == null)
+            foreach (var user in users)
             {
-                return false;
+                System.Diagnostics.Debug.WriteLine("user.Name");
+                System.Diagnostics.Debug.WriteLine(user.Name);
+
+                System.Diagnostics.Debug.WriteLine("user.Password");
+                System.Diagnostics.Debug.WriteLine(user.Password);
             }
 
-            return true;
+            var loggedInUser = connection.Table<User>()
+                .FirstOrDefault(u => u.Name == username && u.Password == password);
+            
+
+            if(loggedInUser == null)
+            {                
+                return 0;
+            }
+
+            return loggedInUser.Id;
+        }
+
+        public User GetUserById(int userId)
+        {
+            return connection.Table<User>().FirstOrDefault(u => u.Id == userId);
         }
 
 

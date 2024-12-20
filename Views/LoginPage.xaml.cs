@@ -1,4 +1,6 @@
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
+using Microsoft.Extensions.Logging.Abstractions;
 namespace InleverenWeek4MobileDev.Views;
 
 public partial class LoginPage : ContentPage
@@ -15,7 +17,7 @@ public partial class LoginPage : ContentPage
 
     private async void SubmitLogin(object sender, EventArgs e)
     {
-        string username = EmailEntry.Text;
+        string username = LoginEntry.Text;
         string password = PasswordEntry.Text;
 
         if (string.IsNullOrEmpty(username))
@@ -30,13 +32,19 @@ public partial class LoginPage : ContentPage
             return;
         }
 
-        bool isSuccess = LoginUser(username, password);
-
-        if (isSuccess)
+        int loggedInUserId = LoginUser(username, password);
+        
+        if (loggedInUserId != 0)
         {
             await DisplayAlert("Success", "User logged in", "OK");
 
-            await Navigation.PushAsync(new MainPage());
+            System.Diagnostics.Debug.WriteLine("Test 1");
+            UserSession.Instance.SetUser(loggedInUserId);
+            System.Diagnostics.Debug.WriteLine("LogInPage: complete.");
+            System.Diagnostics.Debug.WriteLine(UserSession.Instance.UserId);
+            System.Diagnostics.Debug.WriteLine(UserSession.Instance.IsLoggedIn);
+
+            await Navigation.PushAsync(new Frontpage());
         }
         else
         {
@@ -45,9 +53,9 @@ public partial class LoginPage : ContentPage
 
     }
 
-    public bool LoginUser(string username, string password)
+    public int LoginUser(string username, string password)
     {
-        UserRepository userRepository = new UserRepository();
+        UserRepository userRepository = new UserRepository();        
         return(userRepository.LoginUser(username, password));
 
     }

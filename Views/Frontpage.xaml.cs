@@ -1,4 +1,5 @@
 using InleverenWeek4MobileDev.Models;
+using InleverenWeek4MobileDev.Session;
 using Microsoft.Maui.Controls.Shapes;
 
 namespace InleverenWeek4MobileDev;
@@ -8,6 +9,9 @@ public partial class Frontpage : ContentPage
     public Frontpage()
     {
         InitializeComponent();
+
+        System.Diagnostics.Debug.WriteLine("User logged in, user id: ");
+        System.Diagnostics.Debug.WriteLine(UserSession.Instance.UserId);
 
         for (int i = 0; i < 4; i++)
         {

@@ -20,9 +20,8 @@
 
             <Entry 
                 Placeholder="Enter your Username"
-                PlaceholderColor="Gray"                
-                Keyboard="Email"
-                x:Name="EmailEntry"
+                PlaceholderColor="Gray"                                
+                x:Name="LoginEntry"
                 FontSize="16"
                 BackgroundColor="#EDEDED"
                 Margin="20,10,20,0" 
