@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,11 @@ namespace InleverenWeek4MobileDev.ViewModels
             Challenge challenge = new Challenge();
             challenge.Title = title;
             challenge.Description = description;
+            challenge.CreatorId = UserSession.Instance.UserId;
             challengeRepository.AddOrUpdate(challenge);
-
-            string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "SQLiteInleverenWeek7.db3");
-            Console.WriteLine($"Database Path: {dbPath}");
+            
+            MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
+            memberChallengeRepository.SignUp(UserSession.Instance.UserId, challenge.Id);
 
         }
     }

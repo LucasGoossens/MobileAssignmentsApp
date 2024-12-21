@@ -50,13 +50,13 @@ public partial class Frontpage : ContentPage
         for (int i = 0; i < 6; i++)
         {
             var boxView = new BoxView
-            {                
+            {
                 Color = Colors.BlueViolet,
                 CornerRadius = 10,
                 WidthRequest = 375,
                 HeightRequest = 50,
-                Margin = new Thickness(0,6,0,0),
-                
+                Margin = new Thickness(0, 6, 0, 0),
+
             };
             var tapGestureRecognizer = new TapGestureRecognizer();
             tapGestureRecognizer.Tapped += async (sender, args) =>
@@ -69,7 +69,7 @@ public partial class Frontpage : ContentPage
                 }
             };
 
-            boxView.GestureRecognizers.Add(tapGestureRecognizer);           
+            boxView.GestureRecognizers.Add(tapGestureRecognizer);
             RecentChallengesFlexlayout.Children.Add(boxView);
 
         }
@@ -89,5 +89,9 @@ public partial class Frontpage : ContentPage
         await Navigation.PushAsync(new Profile());
     }
 
-   
+    private async void LogOut(object sender, EventArgs e)
+    {
+        UserSession.Instance.ClearUser();
+        await Navigation.PushAsync(new MainPage());
+    }
 }

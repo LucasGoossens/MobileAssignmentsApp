@@ -32,7 +32,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         {
             MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
             memberChallengeRepository.SignUp(UserSession.Instance.UserId, Challenge.Id);
-            App.Current.MainPage.DisplayAlert("Sign Up", "You have signed up for the challenge!", "OK");
+            App.Current.MainPage.DisplayAlert("Sign Up", $"You have signed up for {Challenge.Title}!", "OK");
             await App.Current.MainPage.Navigation.PopAsync();
         }
     }

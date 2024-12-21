@@ -51,7 +51,7 @@
             </Border.Shadow>
             <FlexLayout JustifyContent="SpaceBetween" Direction="Row">
                 <Button Text="Shop" Clicked="Shop" HorizontalOptions="End" />
-                <Button Text="/\0" HorizontalOptions="StartAndExpand" />
+                <Button Text="/\0" Clicked="LogOut" HorizontalOptions="StartAndExpand" />
                 <Button Text="Profile" Clicked="Profile" HorizontalOptions="StartAndExpand" />
             </FlexLayout>
         </Border>
