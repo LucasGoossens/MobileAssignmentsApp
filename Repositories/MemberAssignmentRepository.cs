@@ -1,4 +1,5 @@
-﻿using InleverenWeek4MobileDev.Models.DTO;
+﻿using InleverenWeek4MobileDev.Database;
+using InleverenWeek4MobileDev.Models.DTO;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -11,11 +12,14 @@ namespace InleverenWeek4MobileDev.Repositories
     public class MemberAssignmentRepository
     {
         private readonly SQLiteConnection _connection;
-
-        public MemberAssignmentRepository(SQLiteConnection connection)
+        public string? statusMessage { get; set; }
+        public MemberAssignmentRepository()
         {
-            _connection = connection;
+            _connection = new SQLiteConnection(
+            Constants.DatabasePath,
+            Constants.flags);
             _connection.CreateTable<MemberAssignment>();
+
         }
 
         public List<MemberAssignment> GetAssignmentsByStatus(int memberId, string status)

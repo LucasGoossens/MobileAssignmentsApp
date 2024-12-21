@@ -1,5 +1,7 @@
 ﻿using InleverenWeek4MobileDev.Database;
 using InleverenWeek4MobileDev.Models;
+using InleverenWeek4MobileDev.Models.DTO;
+using InleverenWeek4MobileDev.Views;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -63,7 +65,13 @@ namespace InleverenWeek4MobileDev.Repositories
             
             return challenge;
         }
+        public ChallengeNotSignedUpDTO GetChallengeNotSignedUp(int challengeId)
+        {
+            Challenge challenge = connection.Table<Challenge>().FirstOrDefault(c => c.Id == challengeId);
+            ChallengeNotSignedUpDTO challengeNotSignedUpDTO = new ChallengeNotSignedUpDTO(challenge.Id, challenge.Title, challenge.ImageSource, challenge.Description);
+            return challengeNotSignedUpDTO;
 
+        }
 
         public async void DeleteChallenge(int challengeId)
         {

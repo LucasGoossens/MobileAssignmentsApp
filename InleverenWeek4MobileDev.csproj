@@ -88,6 +88,9 @@
 	  <MauiXaml Update="Views\AssignmentTabs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ChallengeNotSignedUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Comments.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

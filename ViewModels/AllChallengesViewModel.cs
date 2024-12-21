@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
 using InleverenWeek4MobileDev.Views;
 using System.Windows.Input;
 
@@ -16,7 +17,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public AllChallengesViewModel()
         {
             NavigateToCreateChallengeCommand = new Command(async () =>
-            {                
+            {
                 await Application.Current.MainPage.Navigation.PushAsync(new CreateChallenge());
             });
             LoadChallenges();
@@ -27,8 +28,17 @@ namespace InleverenWeek4MobileDev.ViewModels
         {
             if (parameter is int challengeId)
             {
-                // Use the challengeId to navigate
-                await Application.Current.MainPage.Navigation.PushAsync(new Assignments(challengeId));
+                MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
+
+                if (memberChallengeRepository.CheckIfSignedUp(UserSession.Instance.UserId, challengeId))
+                {
+                    // hier moet denk ik dan nog shit meegegeven worden in parameter
+                    await Application.Current.MainPage.Navigation.PushAsync(new Assignments(challengeId));
+                }
+                else
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(new Views.ChallengeNotSignedUp(challengeId));
+                }
             }
         }
 
@@ -43,7 +53,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         {
             ChallengeRepository challengeRepository = new ChallengeRepository();
             TrendingChallenges = challengeRepository.GetAllChallenges();
-            
+
         }
     }
 }

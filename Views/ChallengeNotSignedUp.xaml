@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev"
+             x:Class="InleverenWeek4MobileDev.Views.ChallengeNotSignedUp"
+             Title="Challenge Details">
+    <!--<ContentPage.BindingContext>
+        --><!-- Binding Context is set in the code-behind --><!--
+    </ContentPage.BindingContext>-->
+
+    <ScrollView>
+        <StackLayout Padding="20" Spacing="15">
+            
+            <Image Source="{Binding Challenge.ImageSource}"
+                   Aspect="AspectFill"
+                   HeightRequest="200" />
+
+            
+            <Label Text="{Binding Challenge.Title}"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="Black"
+                   LineBreakMode="WordWrap" />
+
+            <Label Text="Description:"/>
+            <Label Text="{Binding Challenge.Description}"
+                   FontSize="16"
+                   TextColor="Gray"
+                   LineBreakMode="WordWrap" />
+
+            
+            <Button Text="Sign Up For This Challenge!"
+                    BackgroundColor="DodgerBlue"
+                    TextColor="White"
+                    FontSize="18"
+                    CornerRadius="10"
+                    Command="{Binding SignUpCommand}" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
