@@ -21,5 +21,6 @@ namespace InleverenWeek4MobileDev.Models
         public User Creator { get; set; }
         [Ignore]
         public List<Comment> Comments { get; set; }
+
     }
 }

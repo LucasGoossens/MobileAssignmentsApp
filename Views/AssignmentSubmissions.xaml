@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InleverenWeek4MobileDev.AssignmentSubmissions"
              Title="AssignmentSubmissions">
+
+    <!--<ContentPage.BindingContext>
+        <local:ViewModels.AssignmentSubmissionsViewModel />
+    </ContentPage.BindingContext>-->
 
     <ScrollView Orientation="Vertical">
         <VerticalStackLayout>         
 
             <Border>
-                <Button Text="SUBMIT ENTRY" Command="{Binding SubmitEntry}" HorizontalOptions="Center" Padding="10,10,10,10" FontSize="Title" Margin="10,10,10,10"/>
+                <Button Text="SUBMIT ENTRY" Command="{Binding SubmitEntryCommand}" HorizontalOptions="Center" Padding="10,10,10,10" FontSize="Title" Margin="10,10,10,10"/>
 
             </Border>
             

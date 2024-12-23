@@ -39,7 +39,7 @@
     </ContentPage>
 
 
-    <local:AssignmentSubmissions Title="SUBMISSIONS"
-            BindingContext="{Binding Assignment.Id}" />
+    <!--<local:AssignmentSubmissions Title="SUBMISSIONS"
+            BindingContext="{Binding Assignment.Id}" />-->
 
 </TabbedPage>

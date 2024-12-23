@@ -1,12 +1,15 @@
+using InleverenWeek4MobileDev.ViewModels;
+
 namespace InleverenWeek4MobileDev;
 
 public partial class AssignmentSubmissions : ContentPage
 {
     public string AssignmentTitle { get; set; } = "Binding Test";
-    public AssignmentSubmissions()
+    public AssignmentSubmissions(int assignmentId)
     {
-        InitializeComponent();
-        BindingContext = this;
+        InitializeComponent();        
+        BindingContext = new AssignmentSubmissionsViewModel(assignmentId);
+
         for (int i = 0; i < 4; i++)
         {
             var frame = new Frame

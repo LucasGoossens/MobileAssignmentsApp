@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InleverenWeek4MobileDev.PhotoPickerModal"
+             BackgroundColor="#80000000"             >
+    <VerticalStackLayout
+        BackgroundColor="White"
+        Padding="20"
+        Spacing="15"
+        HorizontalOptions="Center"
+        VerticalOptions="End"
+        WidthRequest="400"
+        HeightRequest="200">
+        <Label Text="Choose an Option" FontSize="Title" HorizontalOptions="CenterAndExpand" FontAttributes="Bold"/>
+        <HorizontalStackLayout Spacing="100" HorizontalOptions="Center">
+            
+            <FlexLayout Direction="Column">
+                <ImageButton Source="gallery.svg" 
+                 Command="{Binding PickFromDeviceCommand}" 
+                 HeightRequest="50" 
+                 WidthRequest="50" 
+                 BackgroundColor="Transparent" />
+                <Label Text="Gallery"/>
+            </FlexLayout>
+            
+            <FlexLayout Direction="Column">
+            <ImageButton Source="camera.svg" 
+                 Command="{Binding TakePictureCommand}" 
+                 HeightRequest="50" 
+                 WidthRequest="50" 
+                 BackgroundColor="Transparent" />
+            <Label Text="Camera"/>
+            </FlexLayout>
+        </HorizontalStackLayout>
+
+        <Button Text="Cancel" Command="{Binding CancelCommand}" BackgroundColor="LightGray" TextColor="Black" FontAttributes="Bold"/>
+    </VerticalStackLayout>
+</ContentPage>

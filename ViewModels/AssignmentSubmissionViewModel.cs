@@ -1,9 +1,4 @@
 ﻿using CommunityToolkit.Mvvm.Input;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InleverenWeek4MobileDev.ViewModels
 {
@@ -16,12 +11,14 @@ namespace InleverenWeek4MobileDev.ViewModels
             AssignmentId = assignmentId;            
         }
 
+
         [RelayCommand]
-        public void SubmitEntryCommand()
+        public async void SubmitEntry()
         {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new PhotoPickerModal(AssignmentId));
 
         }
-        
+
     }
 
 }

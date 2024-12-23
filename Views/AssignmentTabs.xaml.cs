@@ -8,9 +8,10 @@ public partial class AssignmentTabs : TabbedPage
     public AssignmentTabs(int assignmentId)
 	{
 		InitializeComponent();
-        AssignmentId = assignmentId;
-        BindingContext = new AssignmentsTabViewModel(AssignmentId);
+        AssignmentId = assignmentId;       
 
-
+        // Set BindingContext for the TabbedPage
+        BindingContext = new AssignmentsTabViewModel(AssignmentId);        
+        Children.Add(new AssignmentSubmissions(AssignmentId) { Title = "SUBMISSIONS" });
     }
 }

@@ -103,6 +103,9 @@
 	  <MauiXaml Update="Views\LoginPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\PhotoPickerModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Profile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

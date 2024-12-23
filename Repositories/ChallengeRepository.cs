@@ -21,8 +21,8 @@ namespace InleverenWeek4MobileDev.Repositories
         {
             connection = new SQLiteConnection(
                Constants.DatabasePath,
-               Constants.flags);           
-
+               Constants.flags);
+            connection.CreateTable<Challenge>();
         }
 
 
