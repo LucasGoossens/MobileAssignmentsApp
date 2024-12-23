@@ -12,11 +12,13 @@ namespace InleverenWeek4MobileDev.Models
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        [Ignore]
-        public User Creator { get; set; }
+        public int AssignmentId { get; set; }
+        public int CreatorId { get; set; }        
         [Indexed]
         public string Image { get; set; }
         public int Likes { get; set; }
+        [Ignore]
+        public User Creator { get; set; }
         [Ignore]
         public List<Comment> Comments { get; set; }
     }

@@ -32,15 +32,10 @@ public partial class AssignmentsViewModel : ObservableObject
     private void LoadChallengeData(int challengeId)
     {
         ChallengeRepository challengeRepository = new ChallengeRepository();
-        Challenge = challengeRepository.GetChallengeDetailsById(challengeId);
-        var statuses = new[] { "Completed", "Unlocked", "Locked" };
-        // hard coded voor nu
+        Challenge = challengeRepository.GetChallengeDetailsById(challengeId);        
+        
         for (int i = 0; i < Challenge.Assignments.Count; i++)
-        {
-            Challenge.Assignments[i].Status = statuses[i % statuses.Length];
-            System.Diagnostics.Debug.WriteLine(Challenge.Assignments[i].Title);
-            System.Diagnostics.Debug.WriteLine(Challenge.Assignments[i].Description);
-
+        {    
             switch (Challenge.Assignments[i].Status)
             {
                 case "Locked":

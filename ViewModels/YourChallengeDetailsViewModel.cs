@@ -76,7 +76,8 @@ namespace InleverenWeek4MobileDev.ViewModels
                 ChallengeId = Challenge.Id, // Assuming Challenge is bound and available
                 Title = newAssignmentTitle,
                 Description = newAssignmentDescription,
-                Guides = guides
+                Guides = guides,
+                Status = "Locked"
             };
 
             // Save to the repository
@@ -94,19 +95,8 @@ namespace InleverenWeek4MobileDev.ViewModels
 
             // Optionally, reload assignments for the UI
             Challenge.Assignments = _assignmentRepository.GetAssignmentsByChallengeId(Challenge.Id);
-
-            foreach(var assignment in Challenge.Assignments)
-            {
-                System.Diagnostics.Debug.WriteLine(assignment.Id);
-                
-
-                //foreach (KeyValuePair<string, string> kvp in assignment.Guides)
-                //{
-                //    System.Diagnostics.Debug.WriteLine(kvp.Key);
-                //    System.Diagnostics.Debug.WriteLine(kvp.Value);
-                //}
-
-            }
+            
+            
 
         }
 
