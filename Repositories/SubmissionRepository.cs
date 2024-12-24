@@ -22,7 +22,7 @@ namespace InleverenWeek4MobileDev.Repositories
         }
 
         public List<Models.Submission> GetSubmissionsByAssignmentId(int assignmentId)
-        {
+        {            
             var submissions = connection.Table<Models.Submission>()
                                          .Where(s => s.AssignmentId == assignmentId)
                                          .ToList();

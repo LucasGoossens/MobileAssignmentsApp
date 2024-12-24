@@ -1,10 +1,15 @@
+using InleverenWeek4MobileDev.ViewModels;
+
 namespace InleverenWeek4MobileDev;
 
 public partial class Submission : ContentPage
 {
-	public Submission()
+    public int SubmissionId { get; set; }
+    public Submission(int submissionId)
 	{
-		InitializeComponent();
+        InitializeComponent();
+        SubmissionId = submissionId;
+        BindingContext = new SubmissionViewModel(submissionId);
 	}
 
     private void ProfileClicked(object sender, EventArgs e)

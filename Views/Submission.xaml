@@ -1,38 +1,44 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
              x:Class="InleverenWeek4MobileDev.Submission"
              Title="Submission">
-    <Grid>        
-        <Image Source="trending_clownfish"
+
+    <!-- Bind to the ViewModel -->
+    <ContentPage.BindingContext>
+        <local:SubmissionViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Bind Image Source to the ViewModel property -->
+        <Image Source="{Binding submission.Image}"
                Aspect="AspectFill"
                HorizontalOptions="Center"
                VerticalOptions="FillAndExpand" />
 
-        
         <Grid>
-            
+            <!-- Star Button -->
             <ImageButton 
                 Clicked="ProfileClicked"
                 Source="star"
-                   WidthRequest="50"
-                   HeightRequest="50"
-                   HorizontalOptions="Start"
-                   VerticalOptions="End"
-                   Margin="20" />
+                WidthRequest="50"
+                HeightRequest="50"
+                HorizontalOptions="Start"
+                VerticalOptions="End"
+                Margin="20" />
 
-            
+            <!-- Comment Button -->
             <ImageButton
                 BackgroundColor="White"
                 Opacity=".8"
                 Clicked="CommentsClicked"
                 Source="comment"
-                   WidthRequest="50"
-                   HeightRequest="50"
-                   HorizontalOptions="End"
-                   VerticalOptions="End"
-                   Margin="20"                    
-                   />
+                WidthRequest="50"
+                HeightRequest="50"
+                HorizontalOptions="End"
+                VerticalOptions="End"
+                Margin="20" />
         </Grid>
     </Grid>
 </ContentPage>
