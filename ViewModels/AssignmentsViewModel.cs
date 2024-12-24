@@ -35,7 +35,10 @@ public partial class AssignmentsViewModel : ObservableObject
         Challenge = challengeRepository.GetChallengeDetailsById(challengeId);        
         
         for (int i = 0; i < Challenge.Assignments.Count; i++)
-        {    
+        {
+            // number toegewezen hier
+            Challenge.Assignments[i].Number = i + 1;
+
             switch (Challenge.Assignments[i].Status)
             {
                 case "Locked":

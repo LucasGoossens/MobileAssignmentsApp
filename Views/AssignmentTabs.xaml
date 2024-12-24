@@ -8,7 +8,19 @@
 
     <ContentPage Title="DESCRIPTION">
         <VerticalStackLayout>
-            <Image Source="street" HeightRequest="450" Aspect="AspectFill"/>
+            <Grid>
+                
+                <Image Source="{Binding HeaderImage}" HeightRequest="400" Aspect="AspectFill"/>
+                
+                <Label Text="Overlay Graphic"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"
+           FontSize="Large"
+           TextColor="White"
+           BackgroundColor="Black"
+           Opacity="0.5"
+           Padding="10"/>
+            </Grid>
             <Label Text="{Binding Assignment.Title}" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" Padding="0,3,0,2" />
             <BoxView BackgroundColor="LightGrey" WidthRequest="350" HeightRequest="1"/>
             <Label FontSize="Body" Padding="15,0,15,0" Text="{Binding Assignment.Description}"/>

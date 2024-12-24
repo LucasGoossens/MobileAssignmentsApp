@@ -52,7 +52,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void LoadChallenges()
         {
             ChallengeRepository challengeRepository = new ChallengeRepository();
-            TrendingChallenges = challengeRepository.GetAllChallenges();
+            TrendingChallenges = challengeRepository.GetAllChallenges();            
 
         }
     }

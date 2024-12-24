@@ -29,6 +29,17 @@ namespace InleverenWeek4MobileDev.Repositories
             return submissions;
         }
 
+        public Models.Submission GetMostPopularSubmission(int assignmentId)
+        {
+            var mostPopular = connection.Table<Models.Submission>()
+                                         .Where(s => s.AssignmentId == assignmentId)
+                                         .OrderByDescending(s => s.Likes)
+                                         .FirstOrDefault();
+            return mostPopular;                                        
+                                         
+        }
+
+
         public Models.Submission GetSubmissionById(int submissionId)
         {
             return connection.Table<Models.Submission>().Where(s => s.Id == submissionId).FirstOrDefault();

@@ -11,6 +11,7 @@ namespace InleverenWeek4MobileDev.ViewModels
     public partial class AssignmentsTabViewModel
     {
         public Assignment Assignment { get; set; }
+        public string HeaderImage { get; set; }
 
 
         public AssignmentsTabViewModel(int assignmentId)
@@ -22,6 +23,13 @@ namespace InleverenWeek4MobileDev.ViewModels
         {
             AssignmentRepository assignmentRepository = new AssignmentRepository();
             Assignment = assignmentRepository.GetAssignmentById(assignmentId);
+            GetHeaderImage();
+        }
+
+        public void GetHeaderImage()
+        {
+            SubmissionRepository submissionRepository = new SubmissionRepository();
+            HeaderImage = submissionRepository.GetMostPopularSubmission(Assignment.Id).Image;
         }
     }
 }

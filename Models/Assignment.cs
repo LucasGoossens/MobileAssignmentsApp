@@ -19,6 +19,11 @@ namespace InleverenWeek4MobileDev.Models
         public string Title { get; set; }
         public string Description { get; set; }
         [Ignore]
+        public int Number { get; set; }
+        // dit is het nummer van de assigment ten opzichte van de lijst van alle assignments in een challenge,
+        // wordt berekend in viewmodel omdat t dynamisch is, geen reden om op te slaan
+        // gebeurt in AssignmentsViewmodel/LoadChallengeData();
+        [Ignore]
         public Dictionary<string, string> Guides { get; set; }
         [Column("GuidesJson")]
         public string GuidesJson
