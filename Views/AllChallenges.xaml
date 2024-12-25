@@ -54,10 +54,9 @@ VerticalOptions="Center" />
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
                                 <Border
-                Stroke="CornflowerBlue"
-                StrokeThickness="2"
+                
                 BackgroundColor="LightGray"
-                WidthRequest="180"
+                WidthRequest="160"
                 HeightRequest="250"
                 Margin="3,3,3,6">
                                     <Border.StrokeShape>
@@ -70,28 +69,20 @@ VerticalOptions="Center" />
                         CommandParameter="{Binding Id}" />
                                     </Border.GestureRecognizers>
 
-
                                     <Grid>
-
                                         <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
 
+                                        <!-- HorizontalStackLayout for the title and participants count -->
+                                        <Grid Padding="10,5,0,0" VerticalOptions="End" BackgroundColor="#80000000" ColumnDefinitions="*, Auto">
+                                            <!-- Title on the left side (takes up remaining space) -->
+                                            <Label Text="{Binding Title}" FontSize="12" FontAttributes="Bold" TextColor="White" Grid.Column="0" />
 
-                                        <VerticalStackLayout
-                        Padding="10,5,0,0"
-                        VerticalOptions="End"
-                        BackgroundColor="#80000000"                                             
-                                            Spacing="1">
-
-                                            <Label Text="{Binding Title}"
-                               FontSize="16"
-                               FontAttributes="Bold"
-                               TextColor="White" />
-
-                                            <!-- Participants Count -->
-                                            <Label Text="{Binding Participants.Count}"
-                               FontSize="14"
-                               TextColor="White" />
-                                        </VerticalStackLayout>
+                                            <!-- Image and Participants.Count on the right side -->
+                                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" Spacing="3" Padding="0,10,5,5">
+                                                <Image Source="users" WidthRequest="20" HeightRequest="20"/>
+                                                <Label Text="{Binding Participants.Count}" FontSize="14" TextColor="White" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
@@ -120,11 +111,9 @@ ItemsSource="{Binding NewChallenges}"
 ItemsLayout="HorizontalList">
                         <CollectionView.ItemTemplate>
                             <DataTemplate>
-                                <Border
-            Stroke="CornflowerBlue"
-            StrokeThickness="2"
+                                <Border            
             BackgroundColor="LightGray"
-            WidthRequest="180"
+            WidthRequest="160"
             HeightRequest="250"
             Margin="3,3,3,6">
                                     <Border.StrokeShape>
@@ -136,30 +125,24 @@ ItemsLayout="HorizontalList">
                     Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsCommand}"
                     CommandParameter="{Binding Id}" />
                                     </Border.GestureRecognizers>
-
-
+                                    
                                     <Grid>
-
                                         <Image Source="{Binding ImageSource}" Aspect="AspectFill" />
 
+                                        <!-- HorizontalStackLayout for the title and participants count -->
+                                        <Grid Padding="10,5,0,0" VerticalOptions="End" BackgroundColor="#80000000" ColumnDefinitions="*, Auto">
+                                            <!-- Title on the left side (takes up remaining space) -->
+                                            <Label Text="{Binding Title}" FontSize="12" FontAttributes="Bold" TextColor="White" Grid.Column="0" />
 
-                                        <VerticalStackLayout
-                    Padding="10,5,0,0"
-                    VerticalOptions="End"
-                    BackgroundColor="#80000000"                                             
-                                        Spacing="1">
-
-                                            <Label Text="{Binding Title}"
-                           FontSize="16"
-                           FontAttributes="Bold"
-                           TextColor="White" />
-
-                                            <!-- Participants Count -->
-                                            <Label Text="{Binding Participants.Count}"
-                           FontSize="14"
-                           TextColor="White" />
-                                        </VerticalStackLayout>
+                                            <!-- Image and Participants.Count on the right side -->
+                                            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="End" Spacing="3" Padding="0,10,5,5">
+                                                <Image Source="users" WidthRequest="20" HeightRequest="20"/>
+                                                <Label Text="{Binding Participants.Count}" FontSize="14" TextColor="White" />
+                                            </HorizontalStackLayout>
+                                        </Grid>
                                     </Grid>
+
+
                                 </Border>
                             </DataTemplate>
                         </CollectionView.ItemTemplate>

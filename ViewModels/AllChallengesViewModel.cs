@@ -56,6 +56,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             try
             {
                 NewChallenges = challengeRepository.GetAllChallenges();
+                TrendingChallenges = NewChallenges.OrderByDescending(nc => nc.Participants.Count).Take(5).ToList();
             }
             catch (Exception ex)
             {
