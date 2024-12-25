@@ -16,8 +16,7 @@ namespace InleverenWeek4MobileDev.Models
         public string? Title { get; set; }
         public string? ImageSource { get; set; }
         public string Description { get; set; }
-        [Ignore]
-        // dit is nog niet geimplementeerd
+        [Ignore]        
         public int CreatorId { get; set; }
         [Ignore]
         public List<Assignment> Assignments { get; set; }

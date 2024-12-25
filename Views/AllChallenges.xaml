@@ -58,7 +58,7 @@ VerticalOptions="Center" />
                 StrokeThickness="2"
                 BackgroundColor="LightGray"
                 WidthRequest="180"
-                HeightRequest="300"
+                HeightRequest="250"
                 Margin="3,3,3,6">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="5" />
