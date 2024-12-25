@@ -45,9 +45,31 @@ namespace InleverenWeek4MobileDev.Repositories
         }
 
         public List<Challenge> GetAllChallenges()
-        {            
-            return connection.Table<Challenge>().ToList();            
+        {
+            // Fetch all challenges
+            var challenges = connection.Table<Challenge>().ToList();
+
+            foreach (var challenge in challenges)
+            {
+                // For each challenge, fetch its participants
+                challenge.Participants = GetParticipantsByChallengeId(challenge.Id);
+            }
+
+            return challenges;
         }
+
+
+        public List<User> GetParticipantsByChallengeId(int challengeId)
+        {
+            return connection.Query<User>(
+                @"SELECT u.* 
+          FROM Users u
+          JOIN MemberChallenge mc ON u.Id = mc.MemberId
+          WHERE mc.ChallengeId = ?",
+                challengeId);
+        }
+
+
 
 
         public List<Challenge> GetYourChallenges()

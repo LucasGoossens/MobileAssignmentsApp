@@ -10,10 +10,10 @@
             <!-- Header Section with Image and Title Overlay -->
             <Grid>
                 <!-- Full-screen Image -->
-                <Image Source="ocean.jpg"
+                <Image Source="{Binding Challenge.ImageSource}"
                        Aspect="AspectFill"
-                       HorizontalOptions="FillAndExpand"
-                       VerticalOptions="FillAndExpand" />
+                       MaximumHeightRequest="300"                       
+                       />
 
                 <!-- Title Overlay on Image -->
                 <Label Text="{Binding Challenge.Title}"

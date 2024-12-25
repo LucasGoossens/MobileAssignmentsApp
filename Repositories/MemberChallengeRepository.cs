@@ -47,5 +47,11 @@ namespace InleverenWeek4MobileDev.Repositories
                 // dit werkt niet, maar zou niet moeten uitmaken. bij uitschrijven .Where gebruiken
             }
         }
+
+        // wordt nu niet gebruikt maar misschien late rhandig
+        public List<MemberChallenge> GetParticipantsByChallengeId(int challengeId)
+        {
+            return _connection.Table<MemberChallenge>().Where(c => c.ChallengeId == challengeId).ToList();
+        }
     }
 }

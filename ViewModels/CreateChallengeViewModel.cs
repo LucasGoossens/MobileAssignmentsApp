@@ -16,12 +16,18 @@ namespace InleverenWeek4MobileDev.ViewModels
 
         [ObservableProperty]
         private string imagePath;
+
+        private readonly ContentPage Page;
+        public CreateChallengeViewModel(ContentPage page)
+        {
+            Page = page;
+        }
         public bool SubmitEnabled => !string.IsNullOrWhiteSpace(Title) &&
                           !string.IsNullOrWhiteSpace(Description) &&
                           !string.IsNullOrWhiteSpace(ImagePath);
 
         [RelayCommand(CanExecute = nameof(SubmitEnabled))]
-        public void SubmitChallenge()
+        public async void SubmitChallenge()
         {
             ChallengeRepository challengeRepository = new ChallengeRepository();
             Challenge challenge = new Challenge();
@@ -34,12 +40,13 @@ namespace InleverenWeek4MobileDev.ViewModels
             MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
             memberChallengeRepository.SignUp(UserSession.Instance.UserId, challenge.Id);
 
+            Page.DisplayAlert("Challenge Created!", $"Created {title}!", "OK");
+            await Application.Current.MainPage.Navigation.PushAsync(new AllChallenges());
         }
 
         [RelayCommand]
         public async void PickFromDeviceAsync()
-        {
-            System.Diagnostics.Debug.WriteLine("fsadfdsafasdfsa");
+        {            
             FileResult file = await MediaPicker.PickPhotoAsync();
             if (file == null)
                 return;

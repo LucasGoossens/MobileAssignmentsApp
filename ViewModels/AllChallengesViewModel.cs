@@ -12,6 +12,7 @@ namespace InleverenWeek4MobileDev.ViewModels
     public partial class AllChallengesViewModel : ObservableObject
     {
         public List<Challenge> TrendingChallenges { get; set; }
+        public List<Challenge> NewChallenges { get; set; }
         public ICommand NavigateToCreateChallengeCommand { get; set; }
 
         public AllChallengesViewModel()
@@ -52,7 +53,16 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void LoadChallenges()
         {
             ChallengeRepository challengeRepository = new ChallengeRepository();
-            TrendingChallenges = challengeRepository.GetAllChallenges();            
+            try
+            {
+                NewChallenges = challengeRepository.GetAllChallenges();
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Exception: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Inner Exception: {ex.InnerException?.Message}");
+                throw;
+            }
 
         }
     }

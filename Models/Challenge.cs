@@ -23,7 +23,7 @@ namespace InleverenWeek4MobileDev.Models
         [Ignore]
         public Supermember Creator { get; set; }
         [Ignore]
-        public List<Member> Participants { get; set; }
+        public List<User> Participants { get; set; }
 
     }
 }

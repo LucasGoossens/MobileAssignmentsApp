@@ -7,6 +7,6 @@ public partial class CreateChallenge : ContentPage
 	public CreateChallenge()
 	{
 		InitializeComponent();
-        BindingContext = new CreateChallengeViewModel();
+        BindingContext = new CreateChallengeViewModel(this);
     }
 }

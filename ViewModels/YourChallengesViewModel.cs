@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace InleverenWeek4MobileDev.ViewModels
 {
     public partial class YourChallengesViewModel : ObservableObject
-    {
+    {        
         public List<Challenge> YourChallenges { get; set; }
         public YourChallengesViewModel()
         {
