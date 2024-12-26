@@ -32,8 +32,7 @@ namespace InleverenWeek4MobileDev.ViewModels
                 MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
 
                 if (memberChallengeRepository.CheckIfSignedUp(UserSession.Instance.UserId, challengeId))
-                {
-                    // hier moet denk ik dan nog shit meegegeven worden in parameter
+                {                    
                     await Application.Current.MainPage.Navigation.PushAsync(new Assignments(challengeId));
                 }
                 else

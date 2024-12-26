@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InleverenWeek4MobileDev.Frontpage"
-             Title="Frontpage">
+             Title="Frontpage"
+             xmlns:viewmodel="clr-namespace:InleverenWeek4MobileDev.ViewModels">
+    <ContentPage.BindingContext>
+        <viewmodel:FrontpageViewModel />
+    </ContentPage.BindingContext>
 
     <Grid>
         <!-- Define the grid structure -->
@@ -16,43 +20,136 @@
         <!-- Scrollable Content -->
         <ScrollView Grid.Row="0" Orientation="Vertical">
             <VerticalStackLayout>
+                <!-- Trending Challenges -->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
                 <Label Text="Trending Challenges"
-                       FontSize="Title"
-                       Padding="10,10,0,0" />
+                       FontSize="Medium"
+                       Padding="12,10,0,0" />
 
-                <FlexLayout
-                    Wrap="Wrap"
-                    x:Name="TrendingChallengesFlexLayout"
-                    Direction="Row"
-                    JustifyContent="Start"
-                    AlignItems="Start"
-                    Margin="10">
+                <Button Text="View all"
+                        Background="Transparent"
+                       TextColor="MediumTurquoise"                      
+         FontSize="Small"
+          Padding="0,5,15,0"
+                    Command="{Binding NavigateToAllChallengesCommand}"                        
+                        />
+
                 </FlexLayout>
 
-                <Label Text="Recent Challenges"
-                       FontSize="Title"
-                       Padding="10,10,0,0" />
+                <CollectionView ItemsSource="{Binding TrendingChallenges}">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2"                                          
+                         VerticalItemSpacing="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BackgroundColor="CornflowerBlue"
+                                    Stroke="Transparent"
+                                    StrokeShape="RoundRectangle 10,10,10,10"
+                                    WidthRequest="160"
+                                    HeightRequest="200"
+                                    Margin="6,3,3,6">
+                                <Border.Content>
+                                    <Grid>
+                                        <Image Source="{Binding ImageSource}"
+                                               Aspect="AspectFill"
+                                               WidthRequest="160"
+                                               HeightRequest="200" />
+                                        <!--<Label Text="{Binding Title}"
+                                               HorizontalOptions="Center"
+                                               VerticalOptions="End"
+                                               FontAttributes="Bold"
+                                               TextColor="White"
+                                               BackgroundColor="#80000000"
+                                               Padding="0" />-->
+                                    </Grid>
+                                </Border.Content>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>              
 
-                <ScrollView>
-                    <FlexLayout                     
-                         x:Name="RecentChallengesFlexlayout"
-                         Direction="Column"
-                         JustifyContent="Start"
-                         AlignItems="Center"
-                         Margin="10">
-                    </FlexLayout>
-                </ScrollView>
+                <BoxView WidthRequest="350" HeightRequest="1" Color="LightGrey" Margin="0,10,0,10" HorizontalOptions="Center"/>
+
+                <!-- Recent Challenges -->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">    
+                <Label Text="Recent Challenges"
+                       FontSize="Medium"
+                        Padding="12,10,0,0" />
+
+                    <Button Text="View all"
+                    Background="Transparent"
+                    TextColor="MediumTurquoise"                      
+                    FontSize="Small"
+                    Padding="0,5,15,0"
+                    Command="{Binding NavigateToAllChallengesCommand}"/>
+
+                </FlexLayout>
+                <CollectionView ItemsSource="{Binding RecentChallenges}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Stroke="Green"                                    
+                    WidthRequest="330"
+                    HeightRequest="50"
+                    Margin="0,6,0,0">
+                                <Border.Content>
+                                    <Grid>
+                                        <!-- Base Image -->
+                                        <Image Source="{Binding ImageSource}"
+                               Aspect="AspectFill"
+                               WidthRequest="330"
+                               HeightRequest="200" />
+
+                                        <!-- Gradient Overlay -->
+                                        <BoxView WidthRequest="330"
+                                 HeightRequest="200" Opacity="0.9">
+                                            <BoxView.Background>
+                                                <LinearGradientBrush EndPoint="1,0" >
+                                                    <GradientStop Color="Black" Offset="0.1" />
+                                                    <GradientStop Color="Transparent" Offset="0.5" />
+                                                </LinearGradientBrush>
+                                            </BoxView.Background>
+                                        </BoxView>
+
+                                        <!-- Title Label -->
+                                        <Label Text="{Binding Title}"
+                               Padding="10,0,0,0"
+                               HorizontalOptions="Start"
+                               VerticalOptions="Center"
+                               TextColor="White"
+                               FontSize="16"
+                               FontAttributes="Bold" />
+                                    </Grid>
+                                </Border.Content>
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsCommand}"
+                        CommandParameter="{Binding Id}" />
+                                </Border.GestureRecognizers>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+
             </VerticalStackLayout>
+            
         </ScrollView>
 
+        <!-- Navbar -->
         <Border Grid.Row="1" BackgroundColor="GhostWhite" Padding="10" StrokeShape="RoundRectangle 10,10,0,0">
             <Border.Shadow>
                 <Shadow Brush="Black" Opacity=".3" Offset="0,-5" Radius="50" />
             </Border.Shadow>
             <FlexLayout JustifyContent="SpaceBetween" Direction="Row">
-                <Button Text="Shop" Clicked="Shop" HorizontalOptions="End" />
-                <Button Text="/\0" Clicked="LogOut" HorizontalOptions="StartAndExpand" />
-                <Button Text="Profile" Clicked="Profile" HorizontalOptions="StartAndExpand" />
+                <Button Text="Shop" Command="{Binding ShopCommand}" HorizontalOptions="End" />
+                <Button Text="Log Out" Command="{Binding LogOutCommand}" HorizontalOptions="StartAndExpand" />
+                <Button Text="Profile" Command="{Binding ProfileCommand}" HorizontalOptions="StartAndExpand" />
             </FlexLayout>
         </Border>
     </Grid>
