@@ -34,8 +34,8 @@ namespace InleverenWeek4MobileDev.Repositories
             var mostPopular = connection.Table<Models.Submission>()
                                          .Where(s => s.AssignmentId == assignmentId)
                                          .OrderByDescending(s => s.Likes)
-                                         .FirstOrDefault();
-            return mostPopular;                                        
+                                         .FirstOrDefault();           
+            return mostPopular;                                       
                                          
         }
 

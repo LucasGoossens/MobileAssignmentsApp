@@ -62,6 +62,11 @@ namespace InleverenWeek4MobileDev.Repositories
             connection.Delete(assignment);
         }
 
+        public void DeleteAllAssignments()
+        {
+            connection.DeleteAll<Assignment>();
+        }
+
 
     }
 }

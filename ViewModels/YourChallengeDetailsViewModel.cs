@@ -77,7 +77,9 @@ namespace InleverenWeek4MobileDev.ViewModels
                 Title = newAssignmentTitle,
                 Description = newAssignmentDescription,
                 Guides = guides,
-                Status = "Locked"
+                Status = "Locked",
+                
+                
             };
 
             // Save to the repository

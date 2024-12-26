@@ -16,7 +16,7 @@ namespace InleverenWeek4MobileDev.ViewModels
 
         public AssignmentsTabViewModel(int assignmentId)
         {
-            LoadAssignmentData(assignmentId);   
+            LoadAssignmentData(assignmentId);
         }
 
         public void LoadAssignmentData(int assignmentId)
@@ -29,7 +29,16 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void GetHeaderImage()
         {
             SubmissionRepository submissionRepository = new SubmissionRepository();
-            HeaderImage = submissionRepository.GetMostPopularSubmission(Assignment.Id).Image;
+            Models.Submission mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id);
+           
+            if(mostPopular == null)
+            {
+                HeaderImage = "fiftytwo.svg";
+            }
+            else
+            {
+                HeaderImage = mostPopular.Image;
+            }
         }
     }
 }

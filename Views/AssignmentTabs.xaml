@@ -10,7 +10,7 @@
         <VerticalStackLayout>
             <Grid>
                 
-                <Image Source="{Binding HeaderImage}" HeightRequest="400" Aspect="AspectFill"/>
+                <Image Source="{Binding HeaderImage}" Aspect="AspectFill" HeightRequest="400" WidthRequest="400"/>
                 
                 <Label Text="Overlay Graphic"
            VerticalOptions="Center"

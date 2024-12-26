@@ -21,7 +21,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public ICommand LogOutCommand { get; }
 
         public FrontpageViewModel()
-        {
+        {            
             TrendingChallenges = new List<Challenge>();
             RecentChallenges = new List<Challenge>();
         
