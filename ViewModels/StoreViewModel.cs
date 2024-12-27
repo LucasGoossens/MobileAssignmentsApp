@@ -15,7 +15,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public Models.User LoggedInUser { get; set; }
         public StoreViewModel()
         {
-            LoggedInUser = UserSession.Instance.LoggedInUser;tiona        
+            LoggedInUser = UserSession.Instance.LoggedInUser; 
         }
 
         [RelayCommand]

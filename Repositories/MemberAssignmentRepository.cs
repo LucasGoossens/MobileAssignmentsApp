@@ -29,6 +29,13 @@ namespace InleverenWeek4MobileDev.Repositories
                 .ToList();
         }
 
+        public string GetAssignmentStatus(int memberId, int assignmentId)
+        {
+            var memberAssignment = _connection.Table<MemberAssignment>()
+                .FirstOrDefault(ma => ma.MemberId == memberId && ma.AssignmentId == assignmentId);
+            return memberAssignment?.Status;
+        }
+
         public void SetAssignmentStatus(int memberId, int assignmentId, string status)
         {
             var existingEntry = _connection.Table<MemberAssignment>()
@@ -45,7 +52,7 @@ namespace InleverenWeek4MobileDev.Repositories
             }
             else
             {
-                existingEntry.Status = status;
+                existingEntry.Status = status;                
                 _connection.Update(existingEntry);
             }
         }

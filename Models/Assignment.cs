@@ -1,7 +1,10 @@
-﻿using SQLite;
+﻿using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -38,8 +41,15 @@ namespace InleverenWeek4MobileDev.Models
         public string Status { get; set; }
         // dit gaat over of assignment Locked, Unlocked of Completed is
 
-        public void UnlockAssignment(int userId)
+        public void UnlockAssignment()
         {
+            MemberAssignmentRepository memberAssignmentRepository = new MemberAssignmentRepository();
+            memberAssignmentRepository.SetAssignmentStatus(UserSession.Instance.UserId, this.Id, "Unlocked");          
+            
+            UserRepository userRepository = new UserRepository();
+            userRepository.AddOrUpdate(UserSession.Instance.LoggedInUser);
+
+            UserSession.Instance.Initialize();           
 
         }
 

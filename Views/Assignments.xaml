@@ -147,8 +147,8 @@
                             <!-- Tap Gesture for Item -->
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer 
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsTabCommand}"
-                                    CommandParameter="{Binding Id}" />
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.UnlockAssignmentCommand}"                                    
+                                    CommandParameter="{Binding}" />
                             </Frame.GestureRecognizers>
                         </Frame>
                     </DataTemplate>
