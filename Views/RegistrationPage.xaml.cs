@@ -70,12 +70,13 @@ public partial class RegistrationPage : ContentPage
 
     private bool RegisterUser(string username, string email, string password)
     {
-       User newUser = new User
-       {
-           Name = username,
-           Email = email,
-           Password = password
-       };
+        User newUser = new User
+        {
+            Name = username,
+            Email = email,
+            Password = password,
+            Credits = 5
+        };
 
         UserRepository userRepository = new UserRepository();
         userRepository.AddOrUpdate(newUser);

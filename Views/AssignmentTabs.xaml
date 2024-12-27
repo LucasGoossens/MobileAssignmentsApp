@@ -33,7 +33,7 @@
             <VerticalStackLayout Spacing="15" Padding="10">
                 <!-- Bind the Guide dictionary -->
             <CollectionView ItemsSource="{Binding Assignment.Guides}">
-                <CollectionView.ItemTemplate>
+                <CollectionView.ItemTemplate> 
                     <DataTemplate>
                         <Border  Padding="10" Margin="0,6,0,0">
                             <VerticalStackLayout Spacing="5">

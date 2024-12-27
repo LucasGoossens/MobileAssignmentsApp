@@ -36,7 +36,7 @@ namespace InleverenWeek4MobileDev.Repositories
             }
             else
             {
-                System.Diagnostics.Debug.WriteLine("Hello ." );
+                System.Diagnostics.Debug.WriteLine("User updated." );
                 result = connection.Update(member);
                 statusMessage = string.Format("{0} record(s) updated [Name: {1})", result, member.Name);
             }
