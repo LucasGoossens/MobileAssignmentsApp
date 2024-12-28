@@ -67,6 +67,9 @@ namespace InleverenWeek4MobileDev.ViewModels
 
             SubmissionRepository submissionRepository = new SubmissionRepository();
             submissionRepository.AddSubmission(submission);
+
+            MemberAssignmentRepository memberAssignmentRepository = new MemberAssignmentRepository();
+            memberAssignmentRepository.SetAssignmentStatus(UserSession.Instance.UserId, AssignmentId, "Completed");
         }
 
 

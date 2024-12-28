@@ -16,29 +16,55 @@ namespace InleverenWeek4MobileDev.ViewModels
 
         public AssignmentsTabViewModel(int assignmentId)
         {
+            System.Diagnostics.Debug.WriteLine("AssignmentsViewModel 1");
             LoadAssignmentData(assignmentId);
+            System.Diagnostics.Debug.WriteLine("AssignmentsViewModel 5");
         }
 
         public void LoadAssignmentData(int assignmentId)
-        {
+        {            
             AssignmentRepository assignmentRepository = new AssignmentRepository();
             Assignment = assignmentRepository.GetAssignmentById(assignmentId);
+            System.Diagnostics.Debug.WriteLine("AssignmentsViewModel 2");
             GetHeaderImage();
         }
 
         public void GetHeaderImage()
         {
-            SubmissionRepository submissionRepository = new SubmissionRepository();
-            Models.Submission mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id);
-           
-            if(mostPopular == null)
+            try
             {
-                HeaderImage = "fiftytwo.svg";
+                SubmissionRepository submissionRepository = new SubmissionRepository();
+
+                if (Assignment == null)
+                {
+                    System.Diagnostics.Debug.WriteLine("Assignment is null.");
+                    HeaderImage = "fiftytwo.svg";
+                    return;
+                }
+
+                if (Assignment.Id <= 0)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Invalid Assignment.Id: {Assignment.Id}");
+                    HeaderImage = "fiftytwo.svg";
+                    return;
+                }
+
+                System.Diagnostics.Debug.WriteLine($"Assignment Id: {Assignment.Id}");
+
+                var mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id);
+                System.Diagnostics.Debug.WriteLine("Retrieved most popular submission.");
+
+                HeaderImage = mostPopular?.Image ?? "fiftytwo.svg";
+                System.Diagnostics.Debug.WriteLine($"HeaderImage set to: {HeaderImage}");
             }
-            else
+            catch (Exception ex)
             {
-                HeaderImage = mostPopular.Image;
+                System.Diagnostics.Debug.WriteLine($"Error in GetHeaderImage: {ex.StackTrace}");
+                HeaderImage = "fiftytwo.svg"; // Fallback image
             }
         }
+
+
+
     }
 }

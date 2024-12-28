@@ -3,8 +3,7 @@ using InleverenWeek4MobileDev.ViewModels;
 namespace InleverenWeek4MobileDev;
 
 public partial class AssignmentSubmissions : ContentPage
-{
-    public string AssignmentTitle { get; set; } = "Binding Test";
+{    
     public AssignmentSubmissions(int assignmentId)
     {
         InitializeComponent();        

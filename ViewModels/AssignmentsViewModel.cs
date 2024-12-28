@@ -5,6 +5,7 @@ using InleverenWeek4MobileDev.Repositories;
 using InleverenWeek4MobileDev.Session;
 using System.Collections.ObjectModel;
 
+
 namespace InleverenWeek4MobileDev.ViewModels;
 
 public partial class AssignmentsViewModel : ObservableObject
@@ -67,10 +68,10 @@ public partial class AssignmentsViewModel : ObservableObject
 
     [RelayCommand]
     public async void NavigateToAssignmentsTab(object parameter)
-    {
+    {        
         if (parameter is int Id)
-        {
-            await Application.Current.MainPage.Navigation.PushAsync(new AssignmentTabs(Id));
+        {            
+            await App.Current.MainPage.Navigation.PushAsync(new AssignmentTabs(Id));            
         }
     }
 

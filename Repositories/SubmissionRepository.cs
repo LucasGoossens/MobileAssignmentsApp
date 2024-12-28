@@ -25,7 +25,7 @@ namespace InleverenWeek4MobileDev.Repositories
         {            
             var submissions = connection.Table<Models.Submission>()
                                          .Where(s => s.AssignmentId == assignmentId)
-                                         .ToList();
+                                         .ToList();            
             return submissions;
         }
 
@@ -34,7 +34,11 @@ namespace InleverenWeek4MobileDev.Repositories
             var mostPopular = connection.Table<Models.Submission>()
                                          .Where(s => s.AssignmentId == assignmentId)
                                          .OrderByDescending(s => s.Likes)
-                                         .FirstOrDefault();           
+                                         .FirstOrDefault();            
+            if(mostPopular == null)
+            {
+                return null;
+            }
             return mostPopular;                                       
                                          
         }

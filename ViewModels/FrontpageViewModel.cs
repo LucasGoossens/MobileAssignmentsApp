@@ -3,7 +3,6 @@ using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
 using InleverenWeek4MobileDev.Session;
-using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace InleverenWeek4MobileDev.ViewModels
@@ -28,7 +27,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             ShopCommand = new Command(async () => await GoToShop());
             ProfileCommand = new Command(async () => await GoToProfile());
             LogOutCommand = new Command(async () => await LogOut());
-        
+
             LoadChallenges();
         }
 

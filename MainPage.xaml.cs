@@ -1,5 +1,6 @@
-﻿using InleverenWeek4MobileDev.Models;
-using InleverenWeek4MobileDev.Repositories;
+﻿using InleverenWeek4MobileDev.Database;
+using InleverenWeek4MobileDev.Models;
+using InleverenWeek4MobileDev.Models.DTO;
 using InleverenWeek4MobileDev.Session;
 
 namespace InleverenWeek4MobileDev;
@@ -9,6 +10,15 @@ public partial class MainPage : ContentPage
 
     public MainPage()
     {
+        //var dbConnection = new SQLite.SQLiteConnection(Constants.DatabasePath);
+        //dbConnection.DeleteAll<MemberChallenge>();
+        //dbConnection.DeleteAll<MemberAssignment>();
+        //dbConnection.DeleteAll<Models.Submission>();
+        //dbConnection.DeleteAll<Challenge>();
+        //dbConnection.DeleteAll<Assignment>();
+        //dbConnection.DeleteAll<User>();
+        //dbConnection.DeleteAll<UserSession>();
+
         UserSession.Instance.Initialize();
 
         if (UserSession.Instance.IsLoggedIn)
