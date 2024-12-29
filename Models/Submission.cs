@@ -16,7 +16,7 @@ namespace InleverenWeek4MobileDev.Models
         public int CreatorId { get; set; }        
         [Indexed]
         public string Image { get; set; }
-        public int Likes { get; set; }
+        public double Rating { get; set; }
         [Ignore]
         public User Creator { get; set; }
         [Ignore]

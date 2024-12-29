@@ -29,19 +29,26 @@ namespace InleverenWeek4MobileDev.Repositories
             return submissions;
         }
 
-        public Models.Submission GetMostPopularSubmission(int assignmentId)
+        public List<Models.Submission> GetMostPopularSubmission(int assignmentId)
         {
+            UserSubmissionRatingRepository userSubmissionRatingRepository = new UserSubmissionRatingRepository();
+            List<int> Top5MostPopularAssignmentIds = userSubmissionRatingRepository.GetMostPopularSubmissions(assignmentId);
+
             var mostPopular = connection.Table<Models.Submission>()
-                                         .Where(s => s.AssignmentId == assignmentId)
-                                         .OrderByDescending(s => s.Likes)
-                                         .FirstOrDefault();            
-            if(mostPopular == null)
-            {
-                return null;
+                                         .Where(s => Top5MostPopularAssignmentIds.Contains(s.AssignmentId))
+                                         .OrderByDescending(s => s.Rating)
+                                         .ToList();
+            if (!mostPopular.Any())
+            {             
+                return connection.Table<Models.Submission>()
+                                 .Where(s => s.AssignmentId == assignmentId)
+                                 .Take(5)
+                                 .ToList();
             }
+
             return mostPopular;                                       
                                          
-        }
+        }        
 
 
         public Models.Submission GetSubmissionById(int submissionId)

@@ -42,7 +42,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             submissions.Clear();
             submissions = submissionRepository.GetSubmissionsByAssignmentId(AssignmentId);
             trendingSubmissions.Clear();
-            trendingSubmissions = submissions.OrderByDescending(s => s.Likes).Take(5).ToList();
+            trendingSubmissions = submissions.OrderByDescending(s => s.Rating).Take(5).ToList();
         }
     }
 }

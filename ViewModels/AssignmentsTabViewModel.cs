@@ -51,7 +51,7 @@ namespace InleverenWeek4MobileDev.ViewModels
 
                 System.Diagnostics.Debug.WriteLine($"Assignment Id: {Assignment.Id}");
 
-                var mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id);
+                var mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id)[0];
                 System.Diagnostics.Debug.WriteLine("Retrieved most popular submission.");
 
                 HeaderImage = mostPopular?.Image ?? "fiftytwo.svg";

@@ -36,7 +36,58 @@ namespace InleverenWeek4MobileDev.Repositories
             connection.Delete(userSubmissionRating);
         }
 
+        public List<UserSubmissionRating> GetUserSubmissionRatingsByAssignmentId( int assignmentId)
+        {
+            return connection.Table<UserSubmissionRating>()
+                .Where(usr => usr.AssignmentId == assignmentId)
+                .ToList();
+        }
 
+        public class UserAverage
+        {
+            public int Count;
+            public double Average;
+            public UserAverage()
+            {
 
+            }
+        }
+
+        public List<int> GetMostPopularSubmissions(int assignmentId)
+        {
+            List<UserSubmissionRating> allSubmissions = GetUserSubmissionRatingsByAssignmentId(assignmentId);
+
+            Dictionary<int, UserAverage> averageRatings = new Dictionary<int, UserAverage>();
+
+            foreach (var submission in allSubmissions)
+            {
+                if (!averageRatings.ContainsKey(submission.SubmissionId))
+                {
+                    averageRatings[submission.SubmissionId] = new UserAverage
+                    {
+                        Count = 1,
+                        Average = submission.Rating
+                    };
+                }
+                else
+                {
+                    var current = averageRatings[submission.SubmissionId];
+                    current.Count++;
+                    
+                    current.Average = (current.Average * (current.Count - 1) + submission.Rating) / current.Count;
+
+                    averageRatings[submission.SubmissionId] = current;
+                }
+            }
+            
+            List<int> mostPopularSubmissions = averageRatings
+                .OrderByDescending(ar => ar.Value.Average) 
+                .ThenByDescending(ar => ar.Value.Count)  
+                .Take(5)
+                .Select(ar => ar.Key)                    
+                .ToList();
+
+            return mostPopularSubmissions;
+        }
     }
 }
