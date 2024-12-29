@@ -18,5 +18,6 @@ namespace InleverenWeek4MobileDev.Models
         public string Email { get; set; }        
         public string Password { get; set; }
         public int Credits { get; set; }
+        public string ProfilePicture { get; set; }
     }
 }

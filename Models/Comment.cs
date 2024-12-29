@@ -10,6 +10,8 @@ namespace InleverenWeek4MobileDev.Models
     [Table("Comments")]
     public class Comment
     {
+        [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
         [Indexed]
         public int UserId { get; set; }
         [Indexed]
@@ -18,5 +20,9 @@ namespace InleverenWeek4MobileDev.Models
         public int Likes { get; set; }
         [Ignore]
         public List<Comment> Replies { get; set; }
+        [Ignore]
+        public User User { get; set; }
+
+        public Comment(){}
     }
 }

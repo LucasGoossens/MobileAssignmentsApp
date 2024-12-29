@@ -1,4 +1,7 @@
-﻿using InleverenWeek4MobileDev.Repositories;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using InleverenWeek4MobileDev.Repositories;
+using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace InleverenWeek4MobileDev.ViewModels
 {
-    public partial class SubmissionViewModel
+    public partial class SubmissionViewModel : ObservableObject
     {
         public Models.Submission submission { get; set; }
         public SubmissionViewModel(int submissionId)
@@ -24,6 +27,19 @@ namespace InleverenWeek4MobileDev.ViewModels
         {
             SubmissionRepository submissionRepository = new SubmissionRepository();
             submission = submissionRepository.GetSubmissionById(submissionId);
+        }
+
+
+        [RelayCommand]
+        public void ProfileClicked()
+        {
+            // click
+        }
+
+        [RelayCommand]
+        public void CommentsClicked()
+        {
+            App.Current.MainPage.Navigation.PushAsync(new Comments(submission.Id));
         }
 
     }
