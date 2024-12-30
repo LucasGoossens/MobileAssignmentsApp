@@ -32,12 +32,27 @@ namespace InleverenWeek4MobileDev.Repositories
         public List<Models.Submission> GetMostPopularSubmission(int assignmentId)
         {
             UserSubmissionRatingRepository userSubmissionRatingRepository = new UserSubmissionRatingRepository();
-            List<int> Top5MostPopularAssignmentIds = userSubmissionRatingRepository.GetMostPopularSubmissions(assignmentId);
+            List<int> Top5MostPopularSubmissionIds = userSubmissionRatingRepository.GetMostPopularSubmissions(assignmentId);
+
+            if (Top5MostPopularSubmissionIds == null || !Top5MostPopularSubmissionIds.Any())
+            {
+                System.Diagnostics.Debug.WriteLine("No popular submission IDs found.");
+                return new List<Models.Submission>();
+            }
 
             var mostPopular = connection.Table<Models.Submission>()
-                                         .Where(s => Top5MostPopularAssignmentIds.Contains(s.AssignmentId))
+                                         .Where(s => Top5MostPopularSubmissionIds.Contains(s.Id))
                                          .OrderByDescending(s => s.Rating)
                                          .ToList();
+
+            System.Diagnostics.Debug.WriteLine("Here");
+            foreach (var i in mostPopular)
+            {
+                System.Diagnostics.Debug.WriteLine("AssignmentId: ");
+                System.Diagnostics.Debug.WriteLine(i);
+            }
+
+
             if (!mostPopular.Any())
             {             
                 return connection.Table<Models.Submission>()

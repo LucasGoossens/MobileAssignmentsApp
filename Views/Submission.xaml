@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
@@ -28,17 +27,29 @@
                 VerticalOptions="End"
                 Margin="20" />
 
-            <!-- Comment Button -->
-            <ImageButton
-                BackgroundColor="White"
-                Opacity=".8"
-                Command="{Binding CommentsClickedCommand}"
-                Source="comment"
-                WidthRequest="50"
-                HeightRequest="50"
-                HorizontalOptions="End"
-                VerticalOptions="End"
-                Margin="20" />
+            <!-- StackLayout to position the last two buttons horizontally -->
+            <StackLayout Orientation="Horizontal"
+                         HorizontalOptions="End"
+                         VerticalOptions="End"
+                         Margin="20"
+                         Spacing="30">
+                <!-- Rating Button -->
+                <ImageButton                    
+                    Opacity=".8"
+                    Command="{Binding OpenRatingCommand}"
+                    Source="star_icon"
+                    WidthRequest="35"
+                    HeightRequest="35" />
+
+                <!-- Comment Button -->
+                <ImageButton                    
+                    Opacity=".8"
+                    Command="{Binding CommentsClickedCommand}"
+                    Source="comment_icon.svg"
+                    WidthRequest="35"
+                    HeightRequest="35" />
+                
+            </StackLayout>
         </Grid>
     </Grid>
 </ContentPage>

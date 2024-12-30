@@ -1,0 +1,52 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
+             x:Class="InleverenWeek4MobileDev.RatingModal"
+             Title="RatingModal"
+             BackgroundColor="#80000000">
+
+    <!-- Bind the Page to the ViewModel -->
+    <ContentPage.BindingContext>
+        <local:RatingModalViewModel />
+    </ContentPage.BindingContext>
+
+    <Grid>
+        <!-- Transparent clickable background -->
+        <BoxView BackgroundColor="Transparent">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseModalCommand}" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Modal content -->
+        <Frame BackgroundColor="White"
+               CornerRadius="10"
+               Padding="20"
+               WidthRequest="300"
+               HorizontalOptions="Center"
+               VerticalOptions="Center">
+            <StackLayout Spacing="20">
+
+                <CollectionView ItemsSource="{Binding Stars}">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="9" />
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <ImageButton Source="{Binding ImageSource}" 
+                                         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.StarTappedCommand}"
+                                         CommandParameter="{Binding Id}" />
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+                <Button Text="Rate" Margin="0,15,0,0"
+        Command="{Binding RateSubmittedCommand}"
+        HorizontalOptions="Center"
+        FontSize="Body"/>
+
+            </StackLayout>
+        </Frame>
+    </Grid>
+</ContentPage>

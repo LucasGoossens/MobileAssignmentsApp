@@ -109,6 +109,9 @@
 	  <MauiXaml Update="Views\Profile.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\RatingModal.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Store.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

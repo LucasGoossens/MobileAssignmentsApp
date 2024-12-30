@@ -1,6 +1,7 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Views;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,12 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void ProfileClicked()
         {
             // click
+        }
+
+        [RelayCommand]
+        public async void OpenRating()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new RatingModal(submission));
         }
 
         [RelayCommand]

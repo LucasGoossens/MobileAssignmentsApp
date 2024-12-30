@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SQLite;
 
 namespace InleverenWeek4MobileDev.Models.DTO
 {
@@ -28,6 +22,8 @@ namespace InleverenWeek4MobileDev.Models.DTO
         {
             
         }
+
+
 
     }
 }
