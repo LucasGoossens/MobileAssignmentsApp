@@ -37,7 +37,7 @@ namespace InleverenWeek4MobileDev.Models
 
         [Ignore]
         public List<Submission> Submissions { get; set; }
-        
+        [Ignore]
         public string Status { get; set; }
         // dit gaat over of assignment Locked, Unlocked of Completed is
 

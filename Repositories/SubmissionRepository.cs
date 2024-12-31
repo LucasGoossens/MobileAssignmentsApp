@@ -22,10 +22,10 @@ namespace InleverenWeek4MobileDev.Repositories
         }
 
         public List<Models.Submission> GetSubmissionsByAssignmentId(int assignmentId)
-        {            
+        {
             var submissions = connection.Table<Models.Submission>()
                                          .Where(s => s.AssignmentId == assignmentId)
-                                         .ToList();            
+                                         .ToList();
             return submissions;
         }
 
@@ -41,29 +41,25 @@ namespace InleverenWeek4MobileDev.Repositories
             }
 
             var mostPopular = connection.Table<Models.Submission>()
-                                         .Where(s => Top5MostPopularSubmissionIds.Contains(s.Id))                                         
+                                         .Where(s => Top5MostPopularSubmissionIds.Contains(s.Id))
                                          .ToList();
 
-            System.Diagnostics.Debug.WriteLine("Here");
-            foreach (var i in mostPopular)
-            {
-                System.Diagnostics.Debug.WriteLine("AssignmentId: ");
-                System.Diagnostics.Debug.WriteLine(i);
-            }
-
-
             if (!mostPopular.Any())
-            {             
+            {
                 return connection.Table<Models.Submission>()
                                  .Where(s => s.AssignmentId == assignmentId)
                                  .Take(5)
                                  .ToList();
             }
 
-            return mostPopular;                                       
-                                         
-        }        
+            return mostPopular;
 
+        }
+
+        public List<Models.Submission> GetSubmissionsByCreatorId(int userId)
+        {
+            return connection.Table<Models.Submission>().Where(s => s.CreatorId == userId).ToList();
+        }
 
         public Models.Submission GetSubmissionById(int submissionId)
         {

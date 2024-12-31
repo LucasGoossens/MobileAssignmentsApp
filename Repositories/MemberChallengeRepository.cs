@@ -53,5 +53,13 @@ namespace InleverenWeek4MobileDev.Repositories
         {
             return _connection.Table<MemberChallenge>().Where(c => c.ChallengeId == challengeId).ToList();
         }
+
+        public List<int> GetAllSignedUpChallengesByUserId(int userId)
+        {
+            return _connection.Table<MemberChallenge>()
+                .Where(mc => mc.MemberId == userId && mc.SignedUp)
+                .Select(mc => mc.ChallengeId)
+                .ToList();
+        }
     }
 }

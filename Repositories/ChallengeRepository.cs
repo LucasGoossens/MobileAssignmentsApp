@@ -70,21 +70,28 @@ namespace InleverenWeek4MobileDev.Repositories
         }
 
 
-
-
-        public List<Challenge> GetYourChallenges()
+        public List<Challenge> GetYourChallenges(int creatorId)
         {
-            // hier creatorId meegeven.
-            return connection.Table<Challenge>().ToList();
+            var challenges = connection.Table<Challenge>()
+                .Where(c => c.CreatorId == creatorId)
+                .ToList();
+
+            if (challenges.Count == 0)
+            {
+                return null;
+            }
+
+            return challenges;
+
         }
 
         public Challenge GetChallengeDetailsById(int id)
         {
             Challenge challenge = connection.Table<Challenge>().FirstOrDefault(c => c.Id == id);
-            
+
             AssignmentRepository assignmentRepository = new AssignmentRepository();
             challenge.Assignments = assignmentRepository.GetAssignmentsByChallengeId(id);
-            
+
             return challenge;
         }
         public ChallengeNotSignedUpDTO GetChallengeNotSignedUp(int challengeId)
@@ -93,6 +100,35 @@ namespace InleverenWeek4MobileDev.Repositories
             ChallengeNotSignedUpDTO challengeNotSignedUpDTO = new ChallengeNotSignedUpDTO(challenge.Id, challenge.Title, challenge.ImageSource, challenge.Description);
             return challengeNotSignedUpDTO;
 
+        }
+
+
+        public int GetChallengeCompletedCountByUserId(int userId)
+        {
+            MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
+            List<int> signedUpChallengesIds = memberChallengeRepository.GetAllSignedUpChallengesByUserId(userId);
+
+            int completedCount = 0;
+
+            MemberAssignmentRepository memberAssignmentRepository = new MemberAssignmentRepository();
+
+            foreach (var challengeId in signedUpChallengesIds)
+            {               
+                List<Assignment> assignments = GetChallengeDetailsById(challengeId).Assignments;
+
+                foreach (var assignment in assignments)
+                {
+                    assignment.Status = memberAssignmentRepository.GetAssignmentStatus(userId, assignment.Id);
+                }
+
+                if (assignments.All(a => a.Status == "Completed"))                
+                {                    
+                    completedCount++;
+                }                
+            }
+
+
+            return completedCount;
         }
 
         public async void DeleteChallenge(int challengeId)

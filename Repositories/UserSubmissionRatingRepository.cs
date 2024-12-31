@@ -51,6 +51,21 @@ namespace InleverenWeek4MobileDev.Repositories
         {
             connection.Delete(userSubmissionRating);
         }
+        
+        public UserAverage GetTotalUserAverageByUserId(int userId)
+        {
+            List<UserSubmissionRating> allSubmissions = connection.Table<UserSubmissionRating>()
+                .Where(usr => usr.UserId == userId)
+                .ToList();
+            UserAverage userAverage = new UserAverage();
+            foreach (var submission in allSubmissions)
+            {
+                userAverage.Count++;
+                userAverage.Average += submission.Rating;
+            }
+            userAverage.Average /= userAverage.Count;
+            return userAverage;
+        }
 
         public UserSubmissionRating GetUserSubmissionRatingBySubmissionIdAndUserId(int submissionId, int userId)
         {

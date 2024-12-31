@@ -1,96 +1,187 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
              x:Class="InleverenWeek4MobileDev.Profile"
              Title="Profile">
+
+    <ContentPage.BindingContext>
+        <local:ProfileViewModel />
+    </ContentPage.BindingContext>
+
     <ScrollView Orientation="Vertical">
         <VerticalStackLayout>
+            <!-- Header Section -->
             <Border BackgroundColor="Gray"
-                HorizontalOptions="FillAndExpand"
-                HeightRequest="120"
-                ZIndex="1"
-                Margin="0,0,0,-50"
-                />
-            <Border
-                StrokeShape="Ellipse"
-    WidthRequest="150"
-    HeightRequest="150"
-    StrokeThickness="3"
-    Stroke="White"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    BackgroundColor="Transparent"    
-                Margin="0,-45,0,0"
-    ZIndex="2">
-                <Image
-        Source="ocean"
-        WidthRequest="150"
-        HeightRequest="150"
-        Aspect="AspectFill" />
+                    HorizontalOptions="FillAndExpand"
+                    HeightRequest="120"
+                    ZIndex="1"
+                    Margin="0,0,0,-50" />
+            <Border StrokeShape="Ellipse"
+                    WidthRequest="150"
+                    HeightRequest="150"
+                    StrokeThickness="3"
+                    Stroke="White"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    BackgroundColor="Transparent"
+                    Margin="0,-45,0,0"
+                    ZIndex="2">
+                <Image Source="{Binding Profile.ProfilePicture}"
+                       WidthRequest="150"
+                       HeightRequest="150"
+                       Aspect="AspectFill" />
             </Border>
 
-
-            <Border BackgroundColor="White"                
-        HorizontalOptions="FillAndExpand"
-                Margin="0,-55,0,0"
-                HeightRequest="120">
+            <Border BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    Margin="0,-55,0,0"
+                    HeightRequest="120"
+                    Stroke="White">
                 <VerticalStackLayout>
-                    <Label HorizontalOptions="Center" Padding="0,60,0,0" FontSize="Title" FontAttributes="Bold" Text="User Profilename"/>
-                    <Label HorizontalOptions="Center"  FontSize="Caption" Text="MEMBER"/>
+                    <Label HorizontalOptions="Center" 
+                           Padding="0,60,0,0" 
+                           FontSize="Title" 
+                           FontAttributes="Bold" 
+                           Text="{Binding Profile.Name}" />
+                    <Label HorizontalOptions="Center"  
+                           FontSize="Caption" 
+                           Text="MEMBER" />
                 </VerticalStackLayout>
             </Border>
-            <Border>
-                <Grid ColumnDefinitions="*,Auto,*,Auto,*" HeightRequest="75" VerticalOptions="CenterAndExpand">
 
-                    <FlexLayout Grid.Column="0" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label Text="99" FontSize="28" FontAttributes="Bold"  HorizontalOptions="Center" />
-                        <Label Text="COMPLETED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
+            <Border                
+Stroke="White"
+StrokeThickness="0"
+                Padding="0,0,0,10">
+                <VerticalStackLayout>
+
+                    <FlexLayout 
+        BindableLayout.ItemsSource="{Binding StarEmojisCollection}"
+        Direction="Row"
+        HorizontalOptions="CenterAndExpand">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label Text="{Binding}" FontSize="Title" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
                     </FlexLayout>
-
-
-                    <BoxView BackgroundColor="#b3b3b3"  Grid.Column="1" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
-
-
-                    <FlexLayout Grid.Column="2" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
-                        <Label Text="CREATED" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold" />
-                    </FlexLayout>
-
-
-                    <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="50" Background="#b3b3b3" WidthRequest="2" HorizontalOptions="Center" />
-
-
-                    <FlexLayout Grid.Column="4" Direction="Column" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                        <Label Text="99" FontSize="28" FontAttributes="Bold" HorizontalOptions="Center" />
-                        <Label Text="LIKES" HorizontalOptions="Center" TextColor="#b3b3b3" FontAttributes="Bold"/>
-                    </FlexLayout>
-                </Grid>
+                </VerticalStackLayout>
             </Border>
 
-            <Label Text="Created Challenges" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
-            <ScrollView Orientation="Horizontal">
-                <HorizontalStackLayout>
-                    <FlexLayout
-                x:Name="ProfileCreatedChallenges"
-                />
-
-                </HorizontalStackLayout>
-            </ScrollView>
-
-            <BoxView BackgroundColor="#b3b3b3"  Grid.Column="3" HeightRequest="1" Background="#b3b3b3" WidthRequest="375" HorizontalOptions="CenterAndExpand" />
 
 
-            <Label Text="Recent Submissions" FontAttributes="Bold" FontSize="Large" Padding="10,8,0,5"/>
-            <ScrollView Orientation="Horizontal">
-                <HorizontalStackLayout>
-                    <FlexLayout
-                x:Name="ProfileRecentSubmissions"
-                />
+            <!-- Stats Section -->
+        <Border>
+            <Grid ColumnDefinitions="*,Auto,*,Auto,*" 
+                      HeightRequest="75" 
+                      VerticalOptions="CenterAndExpand">
+                <FlexLayout Grid.Column="0" 
+                                Direction="Column" 
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding CompletedCount}" 
+                               FontSize="18" 
+                               FontAttributes="Bold"  
+                               HorizontalOptions="Center" />
+                    <Label Text="COMPLETED" 
+                               HorizontalOptions="Center" 
+                               TextColor="#b3b3b3" 
+                               FontAttributes="Bold" />
+                </FlexLayout>
+                <BoxView BackgroundColor="#b3b3b3"  
+                             Grid.Column="1" 
+                             HeightRequest="50" 
+                             WidthRequest="2" 
+                             HorizontalOptions="Center" />
+                <FlexLayout Grid.Column="2" 
+                                Direction="Column" 
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="CenterAndExpand">
+                    <Label Text="{Binding CreatedCount}" 
+                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               HorizontalOptions="Center" />
+                    <Label Text="CREATED" 
+                               HorizontalOptions="Center" 
+                               TextColor="#b3b3b3" 
+                               FontAttributes="Bold" />
+                </FlexLayout>
+                <BoxView BackgroundColor="#b3b3b3"  
+                             Grid.Column="3" 
+                             HeightRequest="50" 
+                             WidthRequest="2" 
+                             HorizontalOptions="Center" />
+                <FlexLayout Grid.Column="4" 
+                                Direction="Column" 
+                                HorizontalOptions="CenterAndExpand" 
+                                VerticalOptions="CenterAndExpand">
 
-                </HorizontalStackLayout>
-            </ScrollView>
+                    <Label Text="{Binding RecentSubmissions.Count}"                               FontSize="18" 
+                               FontAttributes="Bold" 
+                               HorizontalOptions="Center" />
 
+                    <Label Text="SUBMISSIONS" 
+                           HorizontalOptions="Center" 
+                           TextColor="#b3b3b3" 
+                           FontAttributes="Bold" />
+
+                </FlexLayout>
+            </Grid>
+        </Border>
+            
+
+
+            <!-- Created Challenges Section -->
+        <Label Text="Created Challenges" 
+                   FontAttributes="Bold" 
+                   FontSize="Large" 
+                   Padding="10,8,0,5" />
+        <CollectionView ItemsSource="{Binding CreatedChallenges}" 
+                            HorizontalScrollBarVisibility="Never" 
+                            ItemsLayout="HorizontalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border 
+                        BackgroundColor="LightGray"
+                        StrokeShape="RoundRectangle"
+                        WidthRequest="150"
+                        HeightRequest="250"
+                        Margin="10,3,3,15">
+                        <Image Source="{Binding ImageSource}" 
+                                   Aspect="AspectFill" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <BoxView BackgroundColor="#b3b3b3"  
+                     HeightRequest="1" 
+                     WidthRequest="375" 
+                     HorizontalOptions="CenterAndExpand" />
+
+        <!-- Recent Submissions Section -->
+        <Label Text="Recent Submissions" 
+                   FontAttributes="Bold" 
+                   FontSize="Large" 
+                   Padding="10,8,0,5" />
+        <CollectionView ItemsSource="{Binding RecentSubmissions}" 
+                            HorizontalScrollBarVisibility="Never" 
+                            ItemsLayout="HorizontalList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border 
+                        BackgroundColor="LightGray"
+                                StrokeShape="RoundRectangle"
+                                WidthRequest="150"
+                                HeightRequest="250"
+                                Margin="10,3,3,6">
+                        <Image Source="{Binding Image}" 
+                                   Aspect="AspectFill" />
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
-
 </ContentPage>

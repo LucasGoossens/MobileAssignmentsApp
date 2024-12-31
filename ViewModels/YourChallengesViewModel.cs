@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
 using InleverenWeek4MobileDev.Views;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void LoadChallenges()
         {
             ChallengeRepository challengeRepository = new ChallengeRepository();
-            YourChallenges = challengeRepository.GetYourChallenges();
+            YourChallenges = challengeRepository.GetYourChallenges(UserSession.Instance.UserId);
         }
 
         [RelayCommand]

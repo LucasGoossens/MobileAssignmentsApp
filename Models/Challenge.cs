@@ -15,8 +15,7 @@ namespace InleverenWeek4MobileDev.Models
         [Column("title"), Indexed, NotNull]
         public string? Title { get; set; }
         public string? ImageSource { get; set; }
-        public string Description { get; set; }
-        [Ignore]        
+        public string Description { get; set; }        
         public int CreatorId { get; set; }
         [Ignore]
         public List<Assignment> Assignments { get; set; }
