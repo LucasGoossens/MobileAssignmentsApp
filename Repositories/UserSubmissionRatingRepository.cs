@@ -63,16 +63,7 @@ namespace InleverenWeek4MobileDev.Repositories
                 .Where(usr => usr.AssignmentId == assignmentId)
                 .ToList();
         }
-
-        public class UserAverage
-        {
-            public int Count;
-            public double Average;
-            public UserAverage()
-            {
-
-            }
-        }
+      
 
         public List<int> GetMostPopularSubmissions(int assignmentId)
         {
@@ -109,6 +100,24 @@ namespace InleverenWeek4MobileDev.Repositories
                 .ToList();       
 
             return mostPopularSubmissions;
+        }
+
+
+        public UserAverage GetUserAverageBySubmissionId(int submissionId)
+        {
+            List<UserSubmissionRating> allSubmissions = connection.Table<UserSubmissionRating>()
+                .Where(usr => usr.SubmissionId == submissionId)
+                .ToList();
+
+            UserAverage userAverage = new UserAverage();
+            foreach (var submission in allSubmissions)
+            {
+                userAverage.Count++;
+                userAverage.Average += submission.Rating;
+            }
+
+            userAverage.Average /= userAverage.Count;
+            return userAverage;
         }
     }
 }

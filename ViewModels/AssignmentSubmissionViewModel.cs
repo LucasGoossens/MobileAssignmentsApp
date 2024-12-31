@@ -16,6 +16,13 @@ namespace InleverenWeek4MobileDev.ViewModels
             submissions = new List<Models.Submission>();
             trendingSubmissions = new List<Models.Submission>();
             LoadSubmissions();
+
+            foreach (var submission in trendingSubmissions)
+            {
+                System.Diagnostics.Debug.WriteLine("Count and average");
+                System.Diagnostics.Debug.WriteLine(submission.Rating.Count);
+                System.Diagnostics.Debug.WriteLine(submission.Rating.Average);
+            }
         }
 
         public AssignmentSubmissionsViewModel()
@@ -41,8 +48,22 @@ namespace InleverenWeek4MobileDev.ViewModels
             SubmissionRepository submissionRepository = new SubmissionRepository();
             submissions.Clear();
             submissions = submissionRepository.GetSubmissionsByAssignmentId(AssignmentId);
-            trendingSubmissions.Clear();           
+
+            UserSubmissionRatingRepository userSubmissionRatingRepository = new UserSubmissionRatingRepository();
+
+            foreach (var submission in submissions)
+            {
+                submission.Rating = userSubmissionRatingRepository.GetUserAverageBySubmissionId(submission.Id);
+            }
+
+            trendingSubmissions.Clear();
             trendingSubmissions = submissionRepository.GetMostPopularSubmission(AssignmentId);
+
+            foreach (var submission in trendingSubmissions)
+            {               
+                    submission.Rating = userSubmissionRatingRepository.GetUserAverageBySubmissionId(submission.Id);                
+            }
+
         }
     }
 }

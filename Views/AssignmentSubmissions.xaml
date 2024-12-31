@@ -36,21 +36,57 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="10" 
-                                   Padding="0" 
-                                   Margin="3,0,3,0" 
-                                   WidthRequest="150" 
-                                   HeightRequest="280" 
-                                   HasShadow="False">
-                                <Image Source="{Binding Image}" 
-                                       Aspect="AspectFill">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
-                                            CommandParameter="{Binding Id}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
+                            <Border 
+                                    Padding="0" 
+                                    Margin="3,0,3,0" 
+                                    WidthRequest="150" 
+                                    HeightRequest="280">
+                                <Grid>
+                                    <!-- Image with overlayed label -->
+                                    <Image Source="{Binding Image}" 
+                                           Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
+                                                CommandParameter="{Binding Id}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <FlexLayout Direction="Row" HorizontalOptions="End" Margin="0,0,5,5">
+                                        <Image Source="users"
+                                          HorizontalOptions="End" 
+                                          VerticalOptions="End"
+                                          BackgroundColor="#80000000"
+                                          MaximumHeightRequest="15"
+                                          MaximumWidthRequest="15"                                               
+                                                 />
+                                        <Label Text="{Binding Rating.Count}" 
+                                         HorizontalOptions="End" 
+                                         VerticalOptions="End" 
+                                         TextColor="White" 
+                                         FontSize="Caption" 
+                                         MaximumHeightRequest="15"
+                                         MaximumWidthRequest="50"
+                                         BackgroundColor="#80000000"
+                                                 Padding="5,1,5,1"/>
+                                        <Image Source="star_icon"
+                                        HorizontalOptions="End" 
+                                        VerticalOptions="End"
+                                        BackgroundColor="#80000000"
+                                        MaximumHeightRequest="15"
+                                        MaximumWidthRequest="15"                                               
+                                               />
+                                        <Label Text="{Binding Rating.Average}" 
+                                       HorizontalOptions="End" 
+                                       VerticalOptions="End" 
+                                       TextColor="White" 
+                                       FontSize="Caption" 
+                                       MaximumHeightRequest="15"
+                                       MaximumWidthRequest="50"
+                                       BackgroundColor="#80000000"
+                                               Padding="5,1,3,1"/>
+                                    </FlexLayout>
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -76,21 +112,29 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Frame CornerRadius="10" 
-                                   Padding="0" 
-                                   Margin="3,3,3,10" 
-                                   WidthRequest="160" 
-                                   HeightRequest="280" 
-                                   HasShadow="False">
-                                <Image Source="{Binding Image}" 
-                                       Aspect="AspectFill">
-                                    <Image.GestureRecognizers>
-                                        <TapGestureRecognizer 
-                                            Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
-                                            CommandParameter="{Binding Id}" />
-                                    </Image.GestureRecognizers>
-                                </Image>
-                            </Frame>
+                            <Border                                      
+                                    Padding="0" 
+                                    Margin="3,3,3,10" 
+                                    WidthRequest="160" 
+                                    HeightRequest="280">
+                                <Grid>
+                                    <!-- Image with overlayed label -->
+                                    <Image Source="{Binding Image}" 
+                                           Aspect="AspectFill">
+                                        <Image.GestureRecognizers>
+                                            <TapGestureRecognizer 
+                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
+                                                CommandParameter="{Binding Id}" />
+                                        </Image.GestureRecognizers>
+                                    </Image>
+                                    <Label Text="Profileinfo?" 
+                                           HorizontalOptions="Center" 
+                                           VerticalOptions="End" 
+                                           TextColor="White" 
+                                           FontSize="Large" 
+                                           BackgroundColor="#80000000" />
+                                </Grid>
+                            </Border>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>

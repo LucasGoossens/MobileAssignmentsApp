@@ -41,8 +41,7 @@ namespace InleverenWeek4MobileDev.Repositories
             }
 
             var mostPopular = connection.Table<Models.Submission>()
-                                         .Where(s => Top5MostPopularSubmissionIds.Contains(s.Id))
-                                         .OrderByDescending(s => s.Rating)
+                                         .Where(s => Top5MostPopularSubmissionIds.Contains(s.Id))                                         
                                          .ToList();
 
             System.Diagnostics.Debug.WriteLine("Here");

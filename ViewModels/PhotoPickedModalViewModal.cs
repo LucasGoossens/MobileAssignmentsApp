@@ -62,8 +62,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             Models.Submission submission = new Models.Submission();            
             submission.AssignmentId = AssignmentId;
             submission.CreatorId = UserSession.Instance.UserId;
-            submission.Image = filePath;
-            submission.Rating = 0;
+            submission.Image = filePath;            
 
             SubmissionRepository submissionRepository = new SubmissionRepository();
             submissionRepository.AddSubmission(submission);
