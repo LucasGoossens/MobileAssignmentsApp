@@ -5,10 +5,10 @@ namespace InleverenWeek4MobileDev;
 
 public partial class Profile : ContentPage
 {
-	public Profile()
+	public Profile(int userId)
 	{
 		InitializeComponent();
-        BindingContext = new ProfileViewModel(UserSession.Instance.UserId);
+        BindingContext = new ProfileViewModel(userId);
 
         //for (int i = 0; i < 4; i++)
         //{

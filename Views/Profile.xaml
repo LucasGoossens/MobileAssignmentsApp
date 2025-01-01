@@ -150,8 +150,15 @@ StrokeThickness="0"
                         Margin="10,3,3,15">
                         <Image Source="{Binding ImageSource}" 
                                    Aspect="AspectFill" />
-                    </Border>
-                </DataTemplate>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer
+Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToChallengeCommand}"
+CommandParameter="{Binding Id}" />
+                            </Border.GestureRecognizers>
+                        </Border>
+
+                        
+                    </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
 
@@ -178,7 +185,12 @@ StrokeThickness="0"
                                 Margin="10,3,3,6">
                         <Image Source="{Binding Image}" 
                                    Aspect="AspectFill" />
-                    </Border>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
+         Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToSubmissionCommand}"
+         CommandParameter="{Binding Id}" />
+                            </Border.GestureRecognizers>
+                        </Border>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

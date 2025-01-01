@@ -76,7 +76,7 @@ namespace InleverenWeek4MobileDev.ViewModels
 
 
         private async Task GoToShop() => await Application.Current.MainPage.Navigation.PushAsync(new Store());
-        private async Task GoToProfile() =>    await Application.Current.MainPage.Navigation.PushAsync(new Profile());
+        private async Task GoToProfile() =>    await Application.Current.MainPage.Navigation.PushAsync(new Profile(UserSession.Instance.UserId));
         private async Task LogOut()
         {
             UserSession.Instance.ClearUser();

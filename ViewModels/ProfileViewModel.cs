@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Models.DTO;
 using InleverenWeek4MobileDev.Repositories;
@@ -64,15 +65,33 @@ namespace InleverenWeek4MobileDev.ViewModels
             }
             catch(Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine("ERROR BNITCH:::");
-                System.Diagnostics.Debug.WriteLine("ERROR BNITCH:::");
+                System.Diagnostics.Debug.WriteLine("ERROR :");                
                 System.Diagnostics.Debug.WriteLine(ex.StackTrace);
             }
 
         }
 
+        [RelayCommand]
+        public async Task NavigateToChallenge(int challengeId)
+        {
+            MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
+
+            if (memberChallengeRepository.CheckIfSignedUp(UserSession.Instance.UserId, challengeId))
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Assignments(challengeId));
+            }
+            else
+            {
+                await Application.Current.MainPage.Navigation.PushAsync(new Views.ChallengeNotSignedUp(challengeId));
+            }
+        }
 
 
+        [RelayCommand]
+        public async void NavigateToSubmission(int submissionId)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new Submission(submissionId));
+        }
 
     }
 }

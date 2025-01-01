@@ -66,5 +66,11 @@ namespace InleverenWeek4MobileDev.ViewModels
 
             CommentSubmit = "";
         }
+
+        [RelayCommand]
+        public async Task NavigateToProfile(int userId)
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new Profile(userId));
+        }
     }
 }
