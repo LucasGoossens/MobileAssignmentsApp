@@ -6,36 +6,27 @@
     <ScrollView>
         <VerticalStackLayout>
 
-            <Image Source="clownfish_splash.jpg"
-                   HeightRequest="500"
+            <Image Source="assignmentslogosplash.jpg"
+                   HeightRequest="450"
                    Aspect="AspectFill"/>
 
             <Button Text="Login" Clicked="NavigateToLogin"
-                    WidthRequest="350"
+                    WidthRequest="340"
                     Padding="0,20,0,20"
                     Margin="0,10,0,10"
                     BackgroundColor="DarkBlue"
                     FontSize="Medium"
                     />
             <Button Text="Registration" Clicked="NavigateToRegister"
-                    WidthRequest="350"
+                    WidthRequest="340"
                     Padding="0,20,0,20"
                     BackgroundColor="White"
                     TextColor="Black"
                     BorderColor="Black"
                     BorderWidth="1"
                     FontSize="Medium"
-                    />
-            
-            
-            <Button Text="Frontpage" Clicked="NavigateToTrending"
-                    WidthRequest="100"
-                    Margin="0,10,0,10"                    
-                    TextColor="White"
-                    FontAttributes="Bold"
-                    BorderWidth="1"
-                    BorderColor="Red"
-                    BackgroundColor="Red"/>
+                    />           
+          
 
         </VerticalStackLayout>
     </ScrollView>

@@ -8,12 +8,11 @@ using System.Windows.Input;
 namespace InleverenWeek4MobileDev.ViewModels
 {
     public partial class FrontpageViewModel : ObservableObject
-    {
-
-        
-        public List<Challenge> TrendingChallenges { get; set; }
-        
+    {        
+        public List<Challenge> TrendingChallenges { get; set; }        
         public List<Challenge> RecentChallenges { get; set; }
+
+        public string ProfilePicture { get; set; }
 
         public ICommand ShopCommand { get; }
         public ICommand ProfileCommand { get; }
@@ -23,7 +22,8 @@ namespace InleverenWeek4MobileDev.ViewModels
         {            
             TrendingChallenges = new List<Challenge>();
             RecentChallenges = new List<Challenge>();
-        
+            ProfilePicture = UserSession.Instance.LoggedInUser.ProfilePicture;
+
             ShopCommand = new Command(async () => await GoToShop());
             ProfileCommand = new Command(async () => await GoToProfile());
             LogOutCommand = new Command(async () => await LogOut());
