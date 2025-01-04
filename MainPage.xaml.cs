@@ -1,12 +1,17 @@
 ﻿using InleverenWeek4MobileDev.Database;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Models.DTO;
+using InleverenWeek4MobileDev.PixoAPI;
+using InleverenWeek4MobileDev.Repositories;
 using InleverenWeek4MobileDev.Session;
+using System.Security.Cryptography.X509Certificates;
 
 namespace InleverenWeek4MobileDev;
 
 public partial class MainPage : ContentPage
 {
+
+    public string ImageSource { get; set; }
 
     public MainPage()
     {
@@ -17,7 +22,12 @@ public partial class MainPage : ContentPage
         //dbConnection.DeleteAll<Challenge>();
         //dbConnection.DeleteAll<Assignment>();
         //dbConnection.DeleteAll<User>();
-        //dbConnection.DeleteAll<UserSession>();
+        //dbConnection.DeleteAll<UserSession>();        
+        //dbConnection.DeleteAll<Models.Submission>();
+        //dbConnection.DeleteAll<UserSubmissionRating>();
+        //dbConnection.DeleteAll<Comment>();        
+
+        //ImageEditorTest();
 
         UserSession.Instance.Initialize();
 
@@ -33,31 +43,60 @@ public partial class MainPage : ContentPage
         }
 
     }
-    //protected override async void OnAppearing()
-    //{
-    //    base.OnAppearing();
-    //    try
-    //    {
-    //        UserSession.Instance.Initialize();
 
-    //        if (UserSession.Instance.IsLoggedIn)
-    //        {
-    //            await Task.Delay(100);
-    //            await Navigation.PushAsync(new Frontpage());
-    //        }
-    //        else
-    //        {
-    //            System.Diagnostics.Debug.WriteLine("User is not logged in.");
-    //        }
-    //    }
-    //    catch (Exception ex)
-    //    {
-    //        System.Diagnostics.Debug.WriteLine($"Error in OnAppearing: {ex.Message}");
-    //    }
-    //}
+    private async void ImageEditorTest()
+    {
+        ImageEditorAPIController test = new ImageEditorAPIController();        
+        SubmissionRepository submissionRepository = new SubmissionRepository();
+        
+        Models.Submission randomSubmission = submissionRepository.GetRandomSubmission();
+        string testSubmissionFilePath = randomSubmission.Image;        
 
+        //await test.Execute(testSubmissionFilePath);
+        randomSubmission.Image = test.ImageFilePath;
 
-
+        if (!string.IsNullOrEmpty(test.ImageFilePath))
+        {
+            randomSubmission.Image = test.ImageFilePath;
+            submissionRepository.UpdateSubmission(randomSubmission);
+            Console.WriteLine(randomSubmission.Image);
+            Console.WriteLine(randomSubmission.Id);            
+            Console.WriteLine("Succesfully updated.");
+            if (File.Exists(randomSubmission.Image))
+            {
+                Console.WriteLine("File exists and is ready to use.");
+            }
+            else
+            {
+                Console.WriteLine("File does not exist at the specified path.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
+        }
+    }
+    
     private async void NavigateToTrending(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new Frontpage());

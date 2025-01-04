@@ -1,10 +1,12 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Repositories;
+using InleverenWeek4MobileDev.Session;
 using InleverenWeek4MobileDev.Views;
 using Microsoft.Maui.Controls;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +16,24 @@ namespace InleverenWeek4MobileDev.ViewModels
     public partial class SubmissionViewModel : ObservableObject
     {
         public Models.Submission submission { get; set; }
+        public ObservableCollection<View> BottomButtons { get; private set; }
         public SubmissionViewModel(int submissionId)
         {
-            LoadSubmission(submissionId);
+            BottomButtons = new ObservableCollection<View>();
+            try
+            {
+                LoadSubmission(submissionId);
+                PopulateBottomButtons();
+            }
+            catch(Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.StackTrace);
+            }
         }
 
         public SubmissionViewModel()
         {
-            
+
         }
 
         public void LoadSubmission(int submissionId)
@@ -30,11 +42,54 @@ namespace InleverenWeek4MobileDev.ViewModels
             submission = submissionRepository.GetSubmissionById(submissionId);
         }
 
+        private void PopulateBottomButtons()
+        {
+            if (submission.CreatorId == UserSession.Instance.UserId)
+            {
+                BottomButtons.Add(new ImageButton
+                {
+                    Command = EditSubmissionCommand,
+                    Source = "wand",
+                    WidthRequest = 50,
+                    HeightRequest = 50,
+                    Opacity = 0.9,
+                });
+            }
+
+            // Rating Button
+            BottomButtons.Add(new ImageButton
+            {
+                Command = OpenRatingCommand,
+                Source = "star_icon",
+                WidthRequest = 35,
+                HeightRequest = 35,
+                Opacity = 0.9,
+            });
+
+            // Comment Button
+            BottomButtons.Add(new ImageButton
+            {
+                Command = CommentsClickedCommand,
+                Source = "comment_icon.svg",
+                WidthRequest = 35,
+                HeightRequest = 35,
+                Opacity = 0.9,
+                
+            });
+        }
+
+        [RelayCommand]
+        public async void EditSubmission()
+        {
+            await App.Current.MainPage.Navigation.PushModalAsync(new EditSubmission(submission));
+        }
+
 
         [RelayCommand]
         public void ProfileClicked()
         {
             // click
+            // hey dit is klaar, add dit
         }
 
         [RelayCommand]

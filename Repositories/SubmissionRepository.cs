@@ -16,6 +16,11 @@ namespace InleverenWeek4MobileDev.Repositories
             connection.CreateTable<Models.Submission>();
         }
 
+        public Models.Submission GetRandomSubmission()
+        {
+            return connection.Table<Models.Submission>().Where(s => s.Image != null).FirstOrDefault();
+        }
+
         public void AddSubmission(Models.Submission submission)
         {
             connection.Insert(submission);

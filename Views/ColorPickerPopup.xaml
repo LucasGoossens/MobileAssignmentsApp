@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:InleverenWeek4MobileDev.Views"
+             x:Class="InleverenWeek4MobileDev.Views.ColorPickerPopup"
+             Title="Color Picker">
+
+    <ContentPage.Content>
+        <StackLayout Padding="20">           
+
+            <Label Text="Red" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="2.2" Minimum="0.01" Value="{Binding RedValue}"/>
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding RedValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Green" FontSize="16" HorizontalOptions="Start" />
+            <Slider Maximum="2.2" Minimum="0.01" Value="{Binding GreenValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding GreenValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Blue" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="2.2" Minimum="0.01" Value="{Binding BlueValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding BlueValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Saturation" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="1" Minimum="-1" Value="{Binding SaturationValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding SaturationValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Brightness" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="1" Minimum="-1" Value="{Binding BrightnessValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding BrightnessValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Contrast" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="1" Minimum="-1" Value="{Binding ContrastValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding ContrastValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Blur" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="1" Minimum="0" Value="{Binding BlurValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding BlurValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
+
+            <Label Text="Noise" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="1000" Minimum="0" Value="{Binding NoiseValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding NoiseValue, StringFormat='{0:F0}'}" HorizontalOptions="Center" />
+
+            <Label Text="Pixelate" FontSize="16" HorizontalOptions="Start"/>
+            <Slider Maximum="20" Minimum="2" Value="{Binding PixelateValue}" />
+            <!-- Use StringFormat to format to 2 decimal places -->
+            <Label Text="{Binding PixelateValue, StringFormat='{0:F0}'}" HorizontalOptions="Center" />
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceAround" Margin="0,50,0,0" >
+                <!-- Close Button -->
+                <Button Text="Close" Command="{Binding ClosePopupCommand}" HorizontalOptions="Center" />
+                <!-- Apply Button -->
+                <Button Text="Apply" Command="{Binding ApplyColorCommand}" HorizontalOptions="Center" />
+            </FlexLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -19,7 +19,7 @@
         <Grid>
             <!-- Star Button -->
             <ImageButton 
-                Command="{Binding ProfileClicked}"
+                Command="{Binding ProfileClickedCommand}"
                 Source="star"
                 WidthRequest="50"
                 HeightRequest="50"
@@ -27,29 +27,27 @@
                 VerticalOptions="End"
                 Margin="20" />
 
-            <!-- StackLayout to position the last two buttons horizontally -->
-            <StackLayout Orientation="Horizontal"
-                         HorizontalOptions="End"
-                         VerticalOptions="End"
-                         Margin="20"
-                         Spacing="30">
-                <!-- Rating Button -->
-                <ImageButton                    
-                    Opacity=".8"
-                    Command="{Binding OpenRatingCommand}"
-                    Source="star_icon"
-                    WidthRequest="35"
-                    HeightRequest="35" />
+            <StackLayout Orientation="Horizontal"                         
+             HorizontalOptions="End"
+             VerticalOptions="End"
+             Margin="0,560,10,10"
+             Spacing="30">
+                <CollectionView ItemsSource="{Binding BottomButtons}">
+                    <CollectionView.ItemsLayout>
+                        <!-- Set the layout of items to be horizontal -->
+                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15"/>
+                    </CollectionView.ItemsLayout>
 
-                <!-- Comment Button -->
-                <ImageButton                    
-                    Opacity=".8"
-                    Command="{Binding CommentsClickedCommand}"
-                    Source="comment_icon.svg"
-                    WidthRequest="35"
-                    HeightRequest="35" />
-                
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <!-- Placeholder for dynamically added buttons -->
+                            <ContentView Content="{Binding}"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
+
+
         </Grid>
     </Grid>
 </ContentPage>

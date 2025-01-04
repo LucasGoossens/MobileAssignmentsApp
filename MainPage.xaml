@@ -6,7 +6,7 @@
     <ScrollView>
         <VerticalStackLayout>
 
-            <Image Source="assignmentslogosplash.jpg"
+            <Image Source="{Binding ImageSource}"
                    HeightRequest="450"
                    Aspect="AspectFill"/>
 
