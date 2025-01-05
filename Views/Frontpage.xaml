@@ -43,33 +43,39 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Border BackgroundColor="CornflowerBlue"
+                            <VerticalStackLayout>
+                                <Border BackgroundColor="CornflowerBlue"
                                     Stroke="Transparent"
                                     StrokeShape="RoundRectangle 10,10,10,10"
                                     WidthRequest="160"
                                     HeightRequest="200"
                                     Margin="6,3,3,6">
-                                <Border.Content>
-                                    <Grid>
-                                        <Image Source="{Binding ImageSource}"
+                                    <Border.Content>
+                                        <Grid >
+                                            <Image Source="{Binding ImageSource}"
                                                Aspect="AspectFill"
                                                WidthRequest="160"
                                                HeightRequest="200" />
-                                        <!--<Label Text="{Binding Title}"
-                                               HorizontalOptions="Center"
-                                               VerticalOptions="End"
-                                               FontAttributes="Bold"
-                                               TextColor="White"
-                                               BackgroundColor="#80000000"
-                                               Padding="0" />-->
-                                    </Grid>
-                                </Border.Content>
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer 
+
+                                            <BoxView BackgroundColor="Black" HeightRequest="20" VerticalOptions="End" Opacity="0.2"/>
+                                            <Label Text="{Binding Title}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="End"
+                                          FontSize="Caption"
+                                            TextColor="White"
+                                                   Padding="0,0,0,2"                                                                                           
+                                                   />
+                                        </Grid>
+                                    </Border.Content>
+
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer 
                                     Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToAssignmentsCommand}"
                                     CommandParameter="{Binding Id}" />
-                                </Border.GestureRecognizers>
-                            </Border>
+                                    </Border.GestureRecognizers>
+                                </Border>
+
+                            </VerticalStackLayout>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
@@ -167,8 +173,8 @@
                     VerticalOptions="Center"
                         WidthRequest="30"
     HeightRequest="30"
-                />               
-                
+                />
+
 
                 <Border
                     StrokeThickness="1"

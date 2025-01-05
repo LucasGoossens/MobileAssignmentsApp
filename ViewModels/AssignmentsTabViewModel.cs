@@ -13,6 +13,8 @@ namespace InleverenWeek4MobileDev.ViewModels
         public Assignment Assignment { get; set; }
         public string HeaderImage { get; set; }
 
+        public Models.Submission TopSubmission{ get; set; }
+
 
         public AssignmentsTabViewModel(int assignmentId)
         {
@@ -51,11 +53,19 @@ namespace InleverenWeek4MobileDev.ViewModels
 
                 System.Diagnostics.Debug.WriteLine($"Assignment Id: {Assignment.Id}");
 
-                var mostPopular = submissionRepository.GetMostPopularSubmission(Assignment.Id)[0];
+                TopSubmission = submissionRepository.GetMostPopularSubmission(Assignment.Id)[0];
                 System.Diagnostics.Debug.WriteLine("Retrieved most popular submission.");
 
-                HeaderImage = mostPopular?.Image ?? "fiftytwo.svg";
+                HeaderImage = TopSubmission?.Image ?? "fiftytwo.svg";
                 System.Diagnostics.Debug.WriteLine($"HeaderImage set to: {HeaderImage}");
+
+                if(TopSubmission != null)
+                {
+                    UserRepository userRepository = new UserRepository();
+                    TopSubmission.Creator = userRepository.GetUserById(TopSubmission.CreatorId);
+                }
+
+
             }
             catch (Exception ex)
             {

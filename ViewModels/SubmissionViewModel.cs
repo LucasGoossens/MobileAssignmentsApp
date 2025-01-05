@@ -17,13 +17,19 @@ namespace InleverenWeek4MobileDev.ViewModels
     {
         public Models.Submission submission { get; set; }
         public ObservableCollection<View> BottomButtons { get; private set; }
+        public string CreatorProfilePicture { get; set; }
+        [ObservableProperty]
+        private Aspect aspectSize = Aspect.AspectFill;
+
         public SubmissionViewModel(int submissionId)
-        {
+        {            
             BottomButtons = new ObservableCollection<View>();
             try
             {
                 LoadSubmission(submissionId);
                 PopulateBottomButtons();
+                UserRepository userRepository = new UserRepository();
+                CreatorProfilePicture = userRepository.GetUserById(submission.CreatorId).ProfilePicture;
             }
             catch(Exception ex)
             {
@@ -79,6 +85,12 @@ namespace InleverenWeek4MobileDev.ViewModels
         }
 
         [RelayCommand]
+        private void SubmissionTapped()
+        {
+            AspectSize = AspectSize == Aspect.AspectFill ? Aspect.AspectFit : Aspect.AspectFill;
+        }
+
+        [RelayCommand]
         public async void EditSubmission()
         {
             await App.Current.MainPage.Navigation.PushModalAsync(new EditSubmission(submission));
@@ -86,10 +98,9 @@ namespace InleverenWeek4MobileDev.ViewModels
 
 
         [RelayCommand]
-        public void ProfileClicked()
+        public async void ProfileClicked()
         {
-            // click
-            // hey dit is klaar, add dit
+            await App.Current.MainPage.Navigation.PushModalAsync(new Profile(submission.CreatorId));
         }
 
         [RelayCommand]

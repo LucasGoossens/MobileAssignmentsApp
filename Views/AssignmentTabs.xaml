@@ -12,14 +12,47 @@
                 
                 <Image Source="{Binding HeaderImage}" Aspect="AspectFill" HeightRequest="400" WidthRequest="400"/>
                 
-                <Label Text="Overlay Graphic"
-           VerticalOptions="Center"
-           HorizontalOptions="Center"
-           FontSize="Large"
-           TextColor="White"
-           BackgroundColor="Black"
+                <BoxView                                        
+                    HeightRequest="75"
+           VerticalOptions="End"
+           HorizontalOptions="FillAndExpand"         
+            BackgroundColor="Black"
            Opacity="0.5"
-           Padding="10"/>
+           />
+
+                <Label Text="Submission by:"                       
+                       VerticalOptions="End"
+                       TextColor="White"
+                       Opacity="0.7"
+                       FontSize="Caption"
+                       FontAttributes="Italic"
+                       Padding="15,0,0,50"
+                       />
+                <FlexLayout Direction="Row"
+                            VerticalOptions="End"
+                HorizontalOptions="Start">
+                <Border
+                     StrokeThickness="1"
+                     Stroke="Black"
+                     BackgroundColor="Transparent"
+                     WidthRequest="40"
+                     HeightRequest="40"
+                     StrokeShape="Ellipse"
+                    
+                    Margin="5,0,0,5"
+                    >
+                    <Image Source="{Binding TopSubmission.Creator.ProfilePicture}"         
+                     HorizontalOptions="CenterAndExpand"
+                     Aspect="AspectFill"                      
+                     BackgroundColor="Transparent" />
+                </Border>
+                    <Label Text="{Binding TopSubmission.Creator.Name}"
+                           VerticalOptions="Start"
+                           Padding="5,0,0,0"
+                           FontSize="Title"
+                           TextColor="White"/>
+                </FlexLayout>
+
             </Grid>
             <Label Text="{Binding Assignment.Title}" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" Padding="0,3,0,2" />
             <BoxView BackgroundColor="LightGrey" WidthRequest="350" HeightRequest="1"/>
