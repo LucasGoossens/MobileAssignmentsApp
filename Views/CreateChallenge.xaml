@@ -5,11 +5,9 @@
              xmlns:viewmodel="clr-namespace:InleverenWeek4MobileDev.ViewModels"
              
              Title="CreateChallenge">
-    <VerticalStackLayout>
+    <FlexLayout Direction="Column" JustifyContent="SpaceEvenly" VerticalOptions="StartAndExpand">        
         <Label 
-        Text="Create new Challenge"
-        Margin="20,10,20,0" 
-        Padding="10,10,10,10"
+        Text="Create new Challenge"        
         FontSize="Title"
         FontAttributes="Bold"
         HorizontalOptions="Center" />
@@ -18,18 +16,17 @@
         Placeholder="Enter Title" 
         PlaceholderColor="Gray"                
         Keyboard="Email"        
-        FontSize="16"
-        BackgroundColor="#EDEDED"
-        Margin="20,10,20,0" 
+        FontSize="16"                
+        BackgroundColor="#EDEDED"        
         TextColor="Black"
-        Text="{Binding Title}"/>
+        Text="{Binding Title}"        />
 
     <Entry 
         Placeholder="Describe the theme of the challenge"
         PlaceholderColor="Gray"           
         FontSize="16"
         BackgroundColor="#EDEDED"        
-        Margin="20,10,20,10" 
+        HeightRequest="100"
         TextColor="Black"
         Text="{Binding Description}"/>        
 
@@ -45,11 +42,12 @@
         BackgroundColor="DarkBlue"
         TextColor="White"
         FontAttributes="Bold"
-        CornerRadius="5"
-        Margin="20,330,20,10" />
+        CornerRadius="5"            
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
 
 
 
-    </VerticalStackLayout>
+    </FlexLayout>
 
 </ContentPage>

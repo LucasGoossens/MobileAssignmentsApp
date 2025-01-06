@@ -9,9 +9,7 @@ using System.Security.Cryptography.X509Certificates;
 namespace InleverenWeek4MobileDev;
 
 public partial class MainPage : ContentPage
-{
-
-    public string ImageSource { get; set; }
+{  
 
     public MainPage()
     {
@@ -42,60 +40,7 @@ public partial class MainPage : ContentPage
             InitializeComponent();
         }
 
-    }
-
-    private async void ImageEditorTest()
-    {
-        ImageEditorAPIController test = new ImageEditorAPIController();        
-        SubmissionRepository submissionRepository = new SubmissionRepository();
-        
-        Models.Submission randomSubmission = submissionRepository.GetRandomSubmission();
-        string testSubmissionFilePath = randomSubmission.Image;        
-
-        //await test.Execute(testSubmissionFilePath);
-        randomSubmission.Image = test.ImageFilePath;
-
-        if (!string.IsNullOrEmpty(test.ImageFilePath))
-        {
-            randomSubmission.Image = test.ImageFilePath;
-            submissionRepository.UpdateSubmission(randomSubmission);
-            Console.WriteLine(randomSubmission.Image);
-            Console.WriteLine(randomSubmission.Id);            
-            Console.WriteLine("Succesfully updated.");
-            if (File.Exists(randomSubmission.Image))
-            {
-                Console.WriteLine("File exists and is ready to use.");
-            }
-            else
-            {
-                Console.WriteLine("File does not exist at the specified path.");
-            }
-        }
-        else
-        {
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-            Console.WriteLine("ImageFilePath is null or empty. Update failed.");
-        }
-    }
+    }  
     
     private async void NavigateToTrending(object sender, EventArgs e)
     {

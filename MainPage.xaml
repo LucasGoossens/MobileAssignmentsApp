@@ -2,33 +2,48 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InleverenWeek4MobileDev.MainPage">
+    <Grid>
+        <!-- Define two rows: one for the image and one for the buttons -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <!-- Image row takes up 2/3 -->
+            <RowDefinition Height="1*" />
+            <!-- Button row takes up 1/3 -->
+        </Grid.RowDefinitions>
 
-    <ScrollView>
-        <VerticalStackLayout>
+        <!-- Image (2/3 of the screen height) -->
+        <Image Source="assignmentslogosplash"
+           Grid.Row="0"           
+           Aspect="AspectFill"
+           HorizontalOptions="Center"
+           VerticalOptions="CenterAndExpand" />
 
-            <Image Source="{Binding ImageSource}"
-                   HeightRequest="450"
-                   Aspect="AspectFill"/>
+        <!-- Button container (1/3 of the screen height) -->
+        <StackLayout Grid.Row="1" 
+                 VerticalOptions="Center" 
+                 Spacing="10" 
+                 HorizontalOptions="Center">
 
+            <!-- Login Button -->
             <Button Text="Login" Clicked="NavigateToLogin"
-                    WidthRequest="340"
-                    Padding="0,20,0,20"
-                    Margin="0,10,0,10"
-                    BackgroundColor="DarkBlue"
-                    FontSize="Medium"
-                    />
-            <Button Text="Registration" Clicked="NavigateToRegister"
-                    WidthRequest="340"
-                    Padding="0,20,0,20"
-                    BackgroundColor="White"
-                    TextColor="Black"
-                    BorderColor="Black"
-                    BorderWidth="1"
-                    FontSize="Medium"
-                    />           
-          
+                WidthRequest="340"
+                Padding="0,20,0,20"
+                BackgroundColor="DarkBlue"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+            <!-- Registration Button -->
+            <Button Text="Registration" Clicked="NavigateToRegister"
+                WidthRequest="340"
+                Padding="0,20,0,20"
+                BackgroundColor="White"
+                TextColor="Black"
+                BorderColor="Black"
+                BorderWidth="1"
+                FontSize="Medium"
+                VerticalOptions="CenterAndExpand" />
+        </StackLayout>
+    </Grid>
+
 
 </ContentPage>
