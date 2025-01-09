@@ -39,8 +39,13 @@ namespace InleverenWeek4MobileDev.ViewModels
             
             MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
             memberChallengeRepository.SignUp(UserSession.Instance.UserId, challenge.Id);
+                
+            UserRepository userRepository = new UserRepository();
+            UserSession.Instance.LoggedInUser.Credits += 5;
+            userRepository.AddOrUpdate(UserSession.Instance.LoggedInUser);
+            UserSession.Instance.Initialize();
 
-            Page.DisplayAlert("Challenge Created!", $"Created {title}!", "OK");
+            Page.DisplayAlert("Challenge Created!", $"Created {title} + Awarded 5 Credits!", "OK");
             await Application.Current.MainPage.Navigation.PushAsync(new AllChallenges());
         }
 

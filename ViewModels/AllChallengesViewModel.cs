@@ -15,8 +15,13 @@ namespace InleverenWeek4MobileDev.ViewModels
         public List<Challenge> NewChallenges { get; set; }
         public ICommand NavigateToCreateChallengeCommand { get; set; }
 
+        public bool Supermember { get; set; } = false;
+
         public AllChallengesViewModel()
         {
+            if(UserSession.Instance.LoggedInUser.Discriminator == "Supermember") {
+                Supermember = true;
+            }
             NavigateToCreateChallengeCommand = new Command(async () =>
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new CreateChallenge());

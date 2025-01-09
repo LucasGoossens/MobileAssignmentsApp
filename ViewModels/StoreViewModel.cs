@@ -32,6 +32,16 @@ namespace InleverenWeek4MobileDev.ViewModels
             UpdateUserCredits();
         }
 
+        [RelayCommand]
+        public void BuySuperMember()
+        {
+            UserRepository userRepository = new UserRepository();
+            LoggedInUser.Discriminator = "Supermember";
+            userRepository.AddOrUpdate(LoggedInUser);
+
+            UserSession.Instance.Initialize();
+            LoggedInUser = UserSession.Instance.LoggedInUser;
+        }
         public void UpdateUserCredits()
         {
             UserRepository userRepository = new UserRepository();

@@ -12,6 +12,8 @@
 
     <ScrollView Orientation="Vertical">
         <VerticalStackLayout>
+            
+            <HorizontalStackLayout IsVisible="{Binding Supermember}" HorizontalOptions="CenterAndExpand" Spacing="15">
             <Button
     Text="Create Challenge"
     Command="{Binding NavigateToCreateChallengeCommand}"
@@ -31,7 +33,7 @@ CornerRadius="10"
 FontAttributes="Bold"
 HorizontalOptions="Center"
 VerticalOptions="Center" />
-
+            </HorizontalStackLayout>
 
             <Label Text="Trending Challenges"
                    FontSize="Title"

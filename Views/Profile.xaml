@@ -46,7 +46,7 @@
                            Text="{Binding Profile.Name}" />
                     <Label HorizontalOptions="Center"  
                            FontSize="Caption" 
-                           Text="MEMBER" />
+                           Text="{Binding Profile.Discriminator}" />
                 </VerticalStackLayout>
             </Border>
 
