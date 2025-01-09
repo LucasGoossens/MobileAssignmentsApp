@@ -6,7 +6,7 @@
              xmlns:viewmodel="clr-namespace:InleverenWeek4MobileDev.ViewModels">
     <ContentPage.BindingContext>
         <viewmodel:FrontpageViewModel />
-    </ContentPage.BindingContext>
+    </ContentPage.BindingContext>    
 
     <Grid>
         <!-- Define the grid structure -->
@@ -20,6 +20,7 @@
         <!-- Scrollable Content -->
         <ScrollView Grid.Row="0" Orientation="Vertical">
             <VerticalStackLayout>
+                <Button Command="{Binding NavigateToSQLiteBrowserCommand}"/>
                 <!-- Trending Challenges -->
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
                     <Label Text="Trending Challenges"

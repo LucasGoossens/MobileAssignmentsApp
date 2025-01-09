@@ -6,7 +6,8 @@
              Title="Color Picker">
 
     <ContentPage.Content>
-        <StackLayout Padding="20">           
+        <ScrollView>
+        <FlexLayout Direction="Row" Padding="20">             
 
             <Label Text="Red" FontSize="16" HorizontalOptions="Start"/>
             <Slider Maximum="2.2" Minimum="0.01" Value="{Binding RedValue}"/>
@@ -59,6 +60,7 @@
                 <!-- Apply Button -->
                 <Button Text="Apply" Command="{Binding ApplyColorCommand}" HorizontalOptions="Center" />
             </FlexLayout>
-        </StackLayout>
+        </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

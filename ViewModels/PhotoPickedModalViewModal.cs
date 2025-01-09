@@ -81,7 +81,7 @@ namespace InleverenWeek4MobileDev.ViewModels
 
         private async Task CloseModalAsync()
         {
-            await Application.Current.MainPage.Navigation.PopModalAsync();
+            await Application.Current.MainPage.Navigation.PopModalAsync();            
         }
     }
 }

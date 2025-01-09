@@ -165,6 +165,7 @@ namespace InleverenWeek4MobileDev.PixoAPI
             catch (Exception ex)
             {
                 Console.WriteLine($"Error sending request: {ex.Message}");
+                Console.WriteLine($"Error sending request: {ex.StackTrace}");
                 throw;
             }
         }

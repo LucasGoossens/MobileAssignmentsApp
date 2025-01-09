@@ -10,6 +10,7 @@
 
 
     <VerticalStackLayout>
+        
         <FlexLayout Margin="40,0,0,0">
             <Label Text="{Binding LoggedInUser.Credits}" FontSize="38" FontAttributes="Bold"/>
             <Image Margin="3,0,0,0" Source="star_icon"/>
@@ -146,6 +147,7 @@ StrokeShape="RoundRectangle 20,20,20,20"
                 </Frame>
             </VerticalStackLayout>
         </Border>
+
 
 
     </VerticalStackLayout>

@@ -21,7 +21,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public bool SubmitEnabled => !string.IsNullOrWhiteSpace(CommentSubmit);
 
 
-        public string CommentsCountText => $"{SubMissionComments?.Count ?? 0} Comments";
+        public string CommentsCountText => SubMissionComments.Count == 1 ? "1 Comment" : $"{SubMissionComments?.Count ?? 0} Comments";
 
         public CommentsViewModel(int submissionId)
         {
@@ -54,17 +54,18 @@ namespace InleverenWeek4MobileDev.ViewModels
             Comment comment = new Comment
             {
                 UserId = UserSession.Instance.UserId,
+                User = UserSession.Instance.LoggedInUser,
                 SubmissionId = SubmissionId,
                 Content = CommentSubmit,
                 Likes = 0
             };
 
             CommentRepository commentRepository = new CommentRepository();
-            commentRepository.AddComment(comment);
-
-            SubMissionComments.Add(comment);
+            commentRepository.AddComment(comment);            
 
             CommentSubmit = "";
+
+            LoadComments();
         }
 
         [RelayCommand]

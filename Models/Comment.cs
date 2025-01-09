@@ -17,9 +17,7 @@ namespace InleverenWeek4MobileDev.Models
         [Indexed]
         public int SubmissionId { get; set; }
         public string Content { get; set; }
-        public int Likes { get; set; }
-        [Ignore]
-        public List<Comment> Replies { get; set; }
+        public int Likes { get; set; }        
         [Ignore]
         public User User { get; set; }
 

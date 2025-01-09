@@ -2,13 +2,19 @@
 using CommunityToolkit.Mvvm.Input;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
+using System.Collections.ObjectModel;
 
 namespace InleverenWeek4MobileDev.ViewModels
 {
-    public partial class AssignmentSubmissionsViewModel
+    public partial class AssignmentSubmissionsViewModel : ObservableObject
     {
-        public List<Models.Submission> submissions { get; set; }
-        public List<Models.Submission> trendingSubmissions { get; set; }
+        [ObservableProperty]
+        private List<Models.Submission> submissions;
+        [ObservableProperty]
+        private List<Models.Submission> trendingSubmissions;
+
+        [ObservableProperty]
+        private bool isRefreshing;
         public int AssignmentId { get; set; }
         public AssignmentSubmissionsViewModel(int assignmentId)
         {
@@ -17,12 +23,6 @@ namespace InleverenWeek4MobileDev.ViewModels
             trendingSubmissions = new List<Models.Submission>();
             LoadSubmissions();
 
-            foreach (var submission in trendingSubmissions)
-            {
-                System.Diagnostics.Debug.WriteLine("Count and average");
-                System.Diagnostics.Debug.WriteLine(submission.Rating.Count);
-                System.Diagnostics.Debug.WriteLine(submission.Rating.Average);
-            }
         }
 
         public AssignmentSubmissionsViewModel()
@@ -31,10 +31,25 @@ namespace InleverenWeek4MobileDev.ViewModels
         }
 
         [RelayCommand]
+        public async Task Refresh()
+        {
+            try
+            {
+                // Refresh the submissions
+                LoadSubmissions();
+            }
+            finally
+            {
+                // End the refreshing animation
+                IsRefreshing = false;
+            }
+        }
+
+
+        [RelayCommand]
         public async void SubmitEntry()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new PhotoPickerModal(AssignmentId));
-            LoadSubmissions();
+            await Application.Current.MainPage.Navigation.PushModalAsync(new PhotoPickerModal(AssignmentId));        
         }
 
         [RelayCommand]
@@ -46,22 +61,25 @@ namespace InleverenWeek4MobileDev.ViewModels
         public void LoadSubmissions()
         {
             SubmissionRepository submissionRepository = new SubmissionRepository();
-            submissions.Clear();
-            submissions = submissionRepository.GetSubmissionsByAssignmentId(AssignmentId);
+            Submissions.Clear();
+            Submissions = submissionRepository.GetSubmissionsByAssignmentId(AssignmentId);
 
             UserSubmissionRatingRepository userSubmissionRatingRepository = new UserSubmissionRatingRepository();
+            UserRepository userRepository = new UserRepository();
 
             foreach (var submission in submissions)
             {
                 submission.Rating = userSubmissionRatingRepository.GetUserAverageBySubmissionId(submission.Id);
+                submission.Creator = userRepository.GetUserById(submission.CreatorId);
             }
 
-            trendingSubmissions.Clear();
-            trendingSubmissions = submissionRepository.GetMostPopularSubmission(AssignmentId);
+            TrendingSubmissions.Clear();
+            TrendingSubmissions = submissionRepository.GetMostPopularSubmission(AssignmentId);
 
             foreach (var submission in trendingSubmissions)
-            {               
-                    submission.Rating = userSubmissionRatingRepository.GetUserAverageBySubmissionId(submission.Id);                
+            {
+                submission.Rating = userSubmissionRatingRepository.GetUserAverageBySubmissionId(submission.Id);
+                submission.Creator = userRepository.GetUserById(submission.CreatorId);
             }
 
         }

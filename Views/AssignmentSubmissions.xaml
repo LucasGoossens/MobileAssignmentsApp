@@ -10,136 +10,156 @@
         <local:AssignmentSubmissionsViewModel />
     </ContentPage.BindingContext>
 
-    <ScrollView Orientation="Vertical">
-        <VerticalStackLayout>
+    <RefreshView IsRefreshing="{Binding IsRefreshing}"
+             Command="{Binding RefreshCommand}">
+        <ScrollView Orientation="Vertical">
+            <VerticalStackLayout>
 
-            <Border>
-                <Button Text="SUBMIT ENTRY" 
+                <Border>
+                    <Button Text="SUBMIT ENTRY" 
                         Command="{Binding SubmitEntryCommand}" 
                         HorizontalOptions="Center" 
                         Padding="10,10,10,10" 
                         FontSize="Title" 
                         Margin="10,10,10,10" />
-            </Border>
+                </Border>
 
-            <!-- Popular Submissions Section -->
-            <Label Text="Popular Submissions"
+                <!-- Popular Submissions Section -->
+                <Label Text="Popular Submissions"
                    FontSize="Medium"
                    Padding="15,0,0,0" />
 
-            <ScrollView Orientation="Horizontal" Padding="10,10,0,10">
-                <CollectionView ItemsSource="{Binding trendingSubmissions}" 
-                                HorizontalScrollBarVisibility="Never">
-                    <CollectionView.ItemsLayout>
-                        <LinearItemsLayout Orientation="Horizontal" 
-                                           ItemSpacing="0" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border 
-                                    Padding="0" 
-                                    Margin="3,0,3,0" 
-                                    WidthRequest="150" 
-                                    HeightRequest="280">
-                                <Grid>
-                                    <!-- Image with overlayed label -->
-                                    <Image Source="{Binding Image}" 
-                                           Aspect="AspectFill">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer 
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
-                                                CommandParameter="{Binding Id}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <FlexLayout Direction="Row" HorizontalOptions="End" Margin="0,0,5,5">
-                                        <Image Source="users"
-                                          HorizontalOptions="End" 
-                                          VerticalOptions="End"
-                                          BackgroundColor="#80000000"
-                                          MaximumHeightRequest="15"
-                                          MaximumWidthRequest="15"                                               
-                                                 />
-                                        <Label Text="{Binding Rating.Count}" 
-                                         HorizontalOptions="End" 
-                                         VerticalOptions="End" 
-                                         TextColor="White" 
-                                         FontSize="Caption" 
-                                         MaximumHeightRequest="15"
-                                         MaximumWidthRequest="50"
-                                         BackgroundColor="#80000000"
-                                                 Padding="5,1,5,1"/>
-                                        <Image Source="star_icon"
-                                        HorizontalOptions="End" 
-                                        VerticalOptions="End"
-                                        BackgroundColor="#80000000"
-                                        MaximumHeightRequest="15"
-                                        MaximumWidthRequest="15"                                               
-                                               />
-                                        <Label Text="{Binding Rating.Average}" 
-                                       HorizontalOptions="End" 
-                                       VerticalOptions="End" 
-                                       TextColor="White" 
-                                       FontSize="Caption" 
-                                       MaximumHeightRequest="15"
-                                       MaximumWidthRequest="50"
-                                       BackgroundColor="#80000000"
-                                               Padding="5,1,3,1"/>
-                                    </FlexLayout>
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                <ScrollView Orientation="Horizontal" Padding="10,10,0,10">
+                    <CollectionView ItemsSource="{Binding TrendingSubmissions}" 
+                 HorizontalScrollBarVisibility="Never">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Horizontal" 
+                            ItemSpacing="0" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
 
-            <BoxView HeightRequest="1"
+                                <Border 
+                                Padding="0" 
+                                Margin="3,0,3,0" 
+                                WidthRequest="150" 
+                                HeightRequest="280">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="Auto"/>
+                                        </Grid.RowDefinitions>
+
+                                        <!-- Image with overlayed label -->
+                                        <Image Source="{Binding Image}" 
+               Grid.RowSpan="2"
+               Aspect="AspectFill">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
+                    CommandParameter="{Binding Id}" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+
+                                        <FlexLayout Grid.Row="1"
+                                                    Margin="0,0,0,3"
+                                                    BackgroundColor="#80000000"
+                                                    
+                    Direction="Row" 
+                    HorizontalOptions="End" 
+                    VerticalOptions="End">
+                                            
+                                            <Image Source="users"                                      
+                                                   MaximumHeightRequest="15"
+                   MaximumWidthRequest="15"/>
+                                            <Label Text="{Binding Rating.Count}" 
+                   TextColor="White" 
+                   FontSize="Caption" 
+                   MaximumHeightRequest="15"
+                   MaximumWidthRequest="50"
+                   
+                   Padding="5,1,6,1"/>
+                                            <Image Source="star_icon"
+                   
+                   MaximumHeightRequest="15"
+                   MaximumWidthRequest="15"/>
+                                            <Label Text="{Binding Rating.Average}" 
+                   TextColor="White" 
+                   FontSize="Caption" 
+                   MaximumHeightRequest="15"
+                   MaximumWidthRequest="50"
+                   
+                   Padding="5,1,3,1"/>
+                                        </FlexLayout>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+        </ScrollView>
+
+        <BoxView HeightRequest="0.1"
                      WidthRequest="380"
                      VerticalOptions="End"
                      HorizontalOptions="Fill"
                      Color="Grey" />
 
-            <!-- New Submissions Section -->
-            <Label Text="New"
-                   FontSize="Medium"
-                   Padding="15,8,0,10" />
+        <!-- New Submissions Section -->
+        <Label Text="New"
+       FontSize="Medium"
+       Padding="15,8,0,10" />
+        <ScrollView Orientation="Vertical">
+            <CollectionView ItemsSource="{Binding Submissions}" 
+                   HorizontalScrollBarVisibility="Never">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="2" />
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border
+                    Padding="0"
+                    Margin="3,3,3,10"
+                    WidthRequest="160"
+                    HeightRequest="280">
+                            <Grid>
+                                <!-- Image as the background -->
+                                <Image Source="{Binding Image}" 
+                               Aspect="AspectFill">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer 
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
+                                    CommandParameter="{Binding Id}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
 
-            <ScrollView Orientation="Vertical">
-                <CollectionView ItemsSource="{Binding submissions}" 
-                                HorizontalScrollBarVisibility="Never">
-                    <CollectionView.ItemsLayout>
-                        <GridItemsLayout Orientation="Vertical" 
-                                          Span="2" />
-                    </CollectionView.ItemsLayout>
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <Border                                      
-                                    Padding="0" 
-                                    Margin="3,3,3,10" 
-                                    WidthRequest="160" 
-                                    HeightRequest="280">
-                                <Grid>
-                                    <!-- Image with overlayed label -->
-                                    <Image Source="{Binding Image}" 
-                                           Aspect="AspectFill">
-                                        <Image.GestureRecognizers>
-                                            <TapGestureRecognizer 
-                                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:AssignmentSubmissionsViewModel}}, Path=NavigateToSubmissionCommand}"
-                                                CommandParameter="{Binding Id}" />
-                                        </Image.GestureRecognizers>
-                                    </Image>
-                                    <Label Text="Profileinfo?" 
-                                           HorizontalOptions="Center" 
-                                           VerticalOptions="End" 
-                                           TextColor="White" 
-                                           FontSize="Large" 
-                                           BackgroundColor="#80000000" />
-                                </Grid>
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </ScrollView>
+                                <!-- Profile picture and name container -->
+                                <FlexLayout Direction="Column"                                   
+                                  HorizontalOptions="Start"
+                                VerticalOptions="End"
+                                  Margin="10,0,10,10"
+                                  BackgroundColor="Transparent">
+                                    <Border                 
+                                VerticalOptions="End"
+                                StrokeThickness="1"
+                                Stroke="White"
+                                BackgroundColor="Transparent"
+                                WidthRequest="32"
+                                HeightRequest="32"
+                                StrokeShape="Ellipse"
+                                Margin="1,0,8,0">
+                                        <Image Source="{Binding Creator.ProfilePicture}"
+                                       Aspect="AspectFill"                                                       />
+                                    </Border>
+
+                                </FlexLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
         </VerticalStackLayout>
-    </ScrollView>
+        </ScrollView>
+    </RefreshView>
 </ContentPage>

@@ -9,7 +9,7 @@ public partial class Assignments : ContentPage
     {
         InitializeComponent();
         ChallengeId = challengeId;
-        BindingContext = new AssignmentsViewModel(ChallengeId);
+        BindingContext = new AssignmentsSubmissions(ChallengeId);
 
         //    for (int i = 0; i < 4; i++)
         //    {

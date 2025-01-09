@@ -44,7 +44,7 @@ namespace InleverenWeek4MobileDev.Repositories
 
             userSubmissionRatingToUpdate.Rating = userSubmissionRating.Rating;
 
-            connection.Update(userSubmissionRatingToUpdate);
+            connection.Update(userSubmissionRatingToUpdate);            
         }
 
         public void DeleteUserSubmissionRating(UserSubmissionRating userSubmissionRating)

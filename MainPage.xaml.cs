@@ -4,7 +4,9 @@ using InleverenWeek4MobileDev.Models.DTO;
 using InleverenWeek4MobileDev.PixoAPI;
 using InleverenWeek4MobileDev.Repositories;
 using InleverenWeek4MobileDev.Session;
+using SQLiteBrowser;
 using System.Security.Cryptography.X509Certificates;
+
 
 namespace InleverenWeek4MobileDev;
 
@@ -23,8 +25,8 @@ public partial class MainPage : ContentPage
         //dbConnection.DeleteAll<UserSession>();        
         //dbConnection.DeleteAll<Models.Submission>();
         //dbConnection.DeleteAll<UserSubmissionRating>();
-        //dbConnection.DeleteAll<Comment>();        
-
+        //dbConnection.DeleteAll<Comment>();
+        
         //ImageEditorTest();
 
         UserSession.Instance.Initialize();
@@ -48,8 +50,8 @@ public partial class MainPage : ContentPage
     }
 
     private async void NavigateToLogin(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new Views.LoginPage());
+    {       
+             await Navigation.PushAsync(new Views.LoginPage());
     }
 
     private async void NavigateToRegister(object sender, EventArgs e)

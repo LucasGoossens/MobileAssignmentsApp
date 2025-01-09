@@ -7,12 +7,14 @@
             >
 
     <ContentPage Title="DESCRIPTION">
-        <VerticalStackLayout>
-            <Grid>
-                
-                <Image Source="{Binding HeaderImage}" Aspect="AspectFill" HeightRequest="400" WidthRequest="400"/>
-                
-                <BoxView                                        
+        
+            <ScrollView>
+                <VerticalStackLayout>
+                    <Grid>
+
+                        <Image Source="{Binding HeaderImage}" Aspect="AspectFill" HeightRequest="400" WidthRequest="400"/>
+
+                        <BoxView                                        
                     HeightRequest="75"
            VerticalOptions="End"
            HorizontalOptions="FillAndExpand"         
@@ -20,7 +22,7 @@
            Opacity="0.5"
            />
 
-                <Label Text="Submission by:"                       
+                        <Label Text="Submission by:"                       
                        VerticalOptions="End"
                        TextColor="White"
                        Opacity="0.7"
@@ -28,10 +30,10 @@
                        FontAttributes="Italic"
                        Padding="15,0,0,50"
                        />
-                <FlexLayout Direction="Row"
+                        <FlexLayout Direction="Row"
                             VerticalOptions="End"
                 HorizontalOptions="Start">
-                <Border
+                            <Border
                      StrokeThickness="1"
                      Stroke="Black"
                      BackgroundColor="Transparent"
@@ -41,44 +43,45 @@
                     
                     Margin="5,0,0,5"
                     >
-                    <Image Source="{Binding TopSubmission.Creator.ProfilePicture}"         
+                                <Image Source="{Binding TopSubmission.Creator.ProfilePicture}"         
                      HorizontalOptions="CenterAndExpand"
                      Aspect="AspectFill"                      
                      BackgroundColor="Transparent" />
-                </Border>
-                    <Label Text="{Binding TopSubmission.Creator.Name}"
+                            </Border>
+                            <Label Text="{Binding TopSubmission.Creator.Name}"
                            VerticalOptions="Start"
                            Padding="5,0,0,0"
                            FontSize="Title"
                            TextColor="White"/>
-                </FlexLayout>
+                        </FlexLayout>
 
-            </Grid>
-            <Label Text="{Binding Assignment.Title}" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" Padding="0,3,0,2" />
-            <BoxView BackgroundColor="LightGrey" WidthRequest="350" HeightRequest="1"/>
-            <Label FontSize="Body" Padding="15,0,15,0" Text="{Binding Assignment.Description}"/>
+                    </Grid>
+                    <Label Text="{Binding Assignment.Title}" FontSize="Title" HorizontalOptions="Center" FontAttributes="Bold" Padding="0,3,0,2" />
+                    <BoxView BackgroundColor="LightGrey" WidthRequest="350" HeightRequest="1"/>
+                    <Label FontSize="Body" Padding="15,0,15,0" Text="{Binding Assignment.Description}"/>
 
-        </VerticalStackLayout>
+                </VerticalStackLayout>
+            </ScrollView>       
     </ContentPage>
 
     <ContentPage Title="GUIDE">
         <ScrollView>
             <VerticalStackLayout Spacing="15" Padding="10">
                 <!-- Bind the Guide dictionary -->
-            <CollectionView ItemsSource="{Binding Assignment.Guides}">
-                <CollectionView.ItemTemplate> 
-                    <DataTemplate>
-                        <Border  Padding="10" Margin="0,6,0,0">
-                            <VerticalStackLayout Spacing="5">
-                                <!-- Section Title -->                                
-                                <Label Text="{Binding Key}" FontSize="Title" FontAttributes="Bold" />
-                                <!-- Section Content -->
-                                <Label Text="{Binding Value}" FontSize="Body" />
-                            </VerticalStackLayout>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
+                <CollectionView ItemsSource="{Binding Assignment.Guides}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border  Padding="10" Margin="0,6,0,0">
+                                <VerticalStackLayout Spacing="5">
+                                    <!-- Section Title -->
+                                    <Label Text="{Binding Key}" FontSize="Title" FontAttributes="Bold" />
+                                    <!-- Section Content -->
+                                    <Label Text="{Binding Value}" FontSize="Body" />
+                                </VerticalStackLayout>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </VerticalStackLayout>
         </ScrollView>
     </ContentPage>

@@ -1,8 +1,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:InleverenWeek4MobileDev.ViewModels"
-             x:Class="InleverenWeek4MobileDev.Submission"
-             >
+             x:Class="InleverenWeek4MobileDev.Submission">
 
     <!-- Bind to the ViewModel -->
     <ContentPage.BindingContext>
@@ -10,14 +9,15 @@
     </ContentPage.BindingContext>
 
     <Grid>
-        <!-- Bind Image Source to the ViewModel property -->
-        <ImageButton Source="{Binding submission.Image}"               
-                     Aspect="{Binding AspectSize}"
-               HorizontalOptions="Center"
-               VerticalOptions="FillAndExpand"
-                     Command="{Binding SubmissionTappedCommand}"
-              />
+        <!-- Main Image -->
+        <ImageButton 
+            Source="{Binding submission.Image}"               
+            Aspect="{Binding AspectSize}"
+            HorizontalOptions="Center"
+            VerticalOptions="FillAndExpand"
+            Command="{Binding SubmissionTappedCommand}" />
 
+        <!-- Overlay for Star Button and Bottom Buttons -->
         <Grid>
             <!-- Star Button -->
             <Border
@@ -35,32 +35,33 @@
                 Command="{Binding ProfileClickedCommand}"
                 Source="{Binding CreatorProfilePicture}"
                    Aspect="AspectFill"
-                WidthRequest="50"
-                HeightRequest="50"
+                WidthRequest="60"
+                HeightRequest="60"
      
                 Margin="20" />
             </Border>
-            <StackLayout Orientation="Horizontal"                         
-             HorizontalOptions="End"
-             VerticalOptions="End"
-             Margin="0,560,10,10"
-             Spacing="30">
-                <CollectionView ItemsSource="{Binding BottomButtons}">
+            
+
+                <!-- Bottom Buttons -->
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <CollectionView 
+                    ItemsSource="{Binding BottomButtons}" 
+                    AbsoluteLayout.LayoutBounds="1,1,AutoSize,AutoSize"
+                    AbsoluteLayout.LayoutFlags="PositionProportional">
                     <CollectionView.ItemsLayout>
-                        <!-- Set the layout of items to be horizontal -->
-                        <LinearItemsLayout Orientation="Horizontal" ItemSpacing="15"/>
+                        <LinearItemsLayout 
+                            Orientation="Horizontal" 
+                            ItemSpacing="15" />
                     </CollectionView.ItemsLayout>
 
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <!-- Placeholder for dynamically added buttons -->
-                            <ContentView Content="{Binding}"/>
+                            <ContentView Content="{Binding}" />
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
-            </StackLayout>
-
-
+            </AbsoluteLayout>
         </Grid>
     </Grid>
 </ContentPage>

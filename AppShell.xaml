@@ -5,6 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:InleverenWeek4MobileDev"
     Shell.FlyoutBehavior="Disabled"
+    Shell.NavBarIsVisible="False"
+    
     Title="InleverenWeek4MobileDev">
 
     <ShellContent

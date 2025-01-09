@@ -8,10 +8,10 @@ using System.Collections.ObjectModel;
 
 namespace InleverenWeek4MobileDev.ViewModels;
 
-public partial class AssignmentsViewModel : ObservableObject
+public partial class AssignmentsSubmissions : ObservableObject
 {
 
-    public AssignmentsViewModel(int challengeId)
+    public AssignmentsSubmissions(int challengeId)
     {
         UnlockedAssignments = new ObservableCollection<Assignment>();
         CompletedAssignments = new ObservableCollection<Assignment>();
@@ -30,7 +30,9 @@ public partial class AssignmentsViewModel : ObservableObject
 
     [ObservableProperty]
     private ObservableCollection<Assignment> lockedAssignments;
-
+    
+    [ObservableProperty]
+    private User creator;
     private void LoadChallengeData(int challengeId)
     {        
         UnlockedAssignments.Clear();
@@ -39,6 +41,9 @@ public partial class AssignmentsViewModel : ObservableObject
 
         ChallengeRepository challengeRepository = new ChallengeRepository();
         Challenge = challengeRepository.GetChallengeDetailsById(challengeId);
+
+        UserRepository userRepository = new UserRepository();
+        Creator = userRepository.GetUserById(Challenge.CreatorId);
 
         MemberAssignmentRepository memberAssignmentRepository = new MemberAssignmentRepository();
 
@@ -65,13 +70,26 @@ public partial class AssignmentsViewModel : ObservableObject
         }
     }
 
+    [RelayCommand]
+    public async Task NavigateToProfile()
+    {
+        await Application.Current.MainPage.Navigation.PushAsync(new Profile(Challenge.CreatorId));
+    }
 
     [RelayCommand]
     public async void NavigateToAssignmentsTab(object parameter)
-    {        
+    {
+        try
+        {
         if (parameter is int Id)
         {            
             await App.Current.MainPage.Navigation.PushAsync(new AssignmentTabs(Id));            
+        }
+
+        }catch(Exception e)
+        {
+            Console.WriteLine(e.Message);
+            Console.WriteLine(e.StackTrace);
         }
     }
 

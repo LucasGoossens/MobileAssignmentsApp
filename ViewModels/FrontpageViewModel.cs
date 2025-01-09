@@ -1,15 +1,17 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using InleverenWeek4MobileDev.Database;
 using InleverenWeek4MobileDev.Models;
 using InleverenWeek4MobileDev.Repositories;
 using InleverenWeek4MobileDev.Session;
+using SQLiteBrowser;
 using System.Windows.Input;
 
 namespace InleverenWeek4MobileDev.ViewModels
 {
     public partial class FrontpageViewModel : ObservableObject
-    {        
-        public List<Challenge> TrendingChallenges { get; set; }        
+    {
+        public List<Challenge> TrendingChallenges { get; set; }
         public List<Challenge> RecentChallenges { get; set; }
 
         public string ProfilePicture { get; set; }
@@ -19,7 +21,7 @@ namespace InleverenWeek4MobileDev.ViewModels
         public ICommand LogOutCommand { get; }
 
         public FrontpageViewModel()
-        {            
+        {
             TrendingChallenges = new List<Challenge>();
             RecentChallenges = new List<Challenge>();
             ProfilePicture = UserSession.Instance.LoggedInUser.ProfilePicture;
@@ -36,7 +38,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             ChallengeRepository challengeRepository = new ChallengeRepository();
             try
             {
-                List<Challenge> allChallenges = challengeRepository.GetAllChallenges();                
+                List<Challenge> allChallenges = challengeRepository.GetAllChallenges();
                 RecentChallenges = allChallenges.Where(c => c.Participants.Any(p => p.Id == UserSession.Instance.UserId)).Take(6).ToList();
 
                 TrendingChallenges = allChallenges.OrderByDescending(nc => nc.Participants.Count).Take(4).ToList();
@@ -51,6 +53,13 @@ namespace InleverenWeek4MobileDev.ViewModels
         }
 
         [RelayCommand]
+        private async Task NavigateToSQLiteBrowser()
+        {
+            await Application.Current.MainPage.Navigation.PushAsync(new DatabaseBrowserPage(Constants.DatabasePath));
+        }
+
+
+        [RelayCommand]
         private async Task NavigateToAssignments(int id)
         {
             MemberChallengeRepository memberChallengeRepository = new MemberChallengeRepository();
@@ -63,7 +72,7 @@ namespace InleverenWeek4MobileDev.ViewModels
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new Views.ChallengeNotSignedUp(id));
             }
-            
+
         }
 
 
@@ -76,7 +85,7 @@ namespace InleverenWeek4MobileDev.ViewModels
 
 
         private async Task GoToShop() => await Application.Current.MainPage.Navigation.PushAsync(new Store());
-        private async Task GoToProfile() =>    await Application.Current.MainPage.Navigation.PushAsync(new Profile(UserSession.Instance.UserId));
+        private async Task GoToProfile() => await Application.Current.MainPage.Navigation.PushAsync(new Profile(UserSession.Instance.UserId));
         private async Task LogOut()
         {
             UserSession.Instance.ClearUser();
