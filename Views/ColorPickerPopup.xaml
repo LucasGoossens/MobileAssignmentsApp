@@ -6,10 +6,11 @@
              Title="Color Picker">
 
     <ContentPage.Content>
-        <ScrollView>
-        <FlexLayout Direction="Row" Padding="20">             
-
-            <Label Text="Red" FontSize="16" HorizontalOptions="Start"/>
+        
+            <ScrollView Orientation="Vertical">
+                
+        <FlexLayout Direction="Column" Padding="0" AlignItems="Stretch">
+                <Label Text="Red" FontSize="16" HorizontalOptions="Start"/>
             <Slider Maximum="2.2" Minimum="0.01" Value="{Binding RedValue}"/>
             <!-- Use StringFormat to format to 2 decimal places -->
             <Label Text="{Binding RedValue, StringFormat='{0:F2}'}" HorizontalOptions="Center" />
@@ -54,12 +55,12 @@
             <!-- Use StringFormat to format to 2 decimal places -->
             <Label Text="{Binding PixelateValue, StringFormat='{0:F0}'}" HorizontalOptions="Center" />
 
-            <FlexLayout Direction="Row" JustifyContent="SpaceAround" Margin="0,50,0,0" >
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10" Margin="20">
                 <!-- Close Button -->
                 <Button Text="Close" Command="{Binding ClosePopupCommand}" HorizontalOptions="Center" />
                 <!-- Apply Button -->
                 <Button Text="Apply" Command="{Binding ApplyColorCommand}" HorizontalOptions="Center" />
-            </FlexLayout>
+            </HorizontalStackLayout>
         </FlexLayout>
         </ScrollView>
     </ContentPage.Content>

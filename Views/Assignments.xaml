@@ -14,66 +14,65 @@
                        Aspect="AspectFill"
                        MaximumHeightRequest="300"                       
                        />
-
-                <!-- Title Overlay on Image -->
+                
+                <BoxView BackgroundColor="#88000000" HeightRequest="50" VerticalOptions="End" Opacity=".3"/>
+                
                 <Label Text="{Binding Challenge.Title}"                       
                        HorizontalOptions="Fill"
                        VerticalOptions="EndAndExpand"
                        TextColor="White"
-                       FontSize="24"
-                       BackgroundColor="#88000000"
+                       FontSize="24"                       
                        Padding="10"
                        HorizontalTextAlignment="Center"
-                       VerticalTextAlignment="Center" />
+                       VerticalTextAlignment="Center"
+                       />
+                
             </Grid>
 
-            <!-- Description Text -->
+            <!-- Description Text -->          
+            
+            <FlexLayout Direction="Column">
+                <Label Text="Created by:" 
+            FontAttributes="Italic" 
+            FontSize="Caption" 
+            Padding="6,1,0,0" 
+            TextColor="LightGrey"
+                   />
 
-            <FlexLayout Direction="Row"            
-            >
-                <StackLayout Orientation="Vertical"                 
-                 Margin="0,0,10,0">
-                    <Label Text="Created by:" 
-               FontAttributes="Italic" 
-               FontSize="Caption" 
-               Padding="6,1,0,0" 
-               TextColor="LightGrey"/>
-                    <Border WidthRequest="42"
+                <!-- Title Overlay on Image -->
+                <Border WidthRequest="42"
+            HeightRequest="42"                
+            Margin="6,1,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="End"
+        >
+                    <Border.StrokeShape>
+                        <Ellipse />
+                    </Border.StrokeShape>
+                    <Image Source="{Binding Creator.ProfilePicture}"
+                WidthRequest="42"
                 HeightRequest="42"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                Margin="10,1,0,0">
-                        <Border.StrokeShape>
-                            <Ellipse />
-                        </Border.StrokeShape>
-                        <Image Source="{Binding Creator.ProfilePicture}"
-                   WidthRequest="42"
-                   HeightRequest="42"
-                   Aspect="AspectFill"
-                   VerticalOptions="Center"
-                   HorizontalOptions="Center"/>
-                        <Border.GestureRecognizers>
-                            <TapGestureRecognizer 
-                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToProfileCommand}"
-                     />
-                        </Border.GestureRecognizers>
-                    </Border>
-
-                    <Label Text="{Binding Creator.Name}"
-                    FontSize="Caption" 
-                    Padding="20,0,0,10" 
-                    TextColor="Black"/>
-                </StackLayout>
-
-                <Label Text="{Binding Challenge.Description}"           
+                Aspect="AspectFill"
+                VerticalOptions="Center"
+                HorizontalOptions="Center"/>
+                    <Border.GestureRecognizers>
+                        <TapGestureRecognizer 
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.NavigateToProfileCommand}"/>
+                    </Border.GestureRecognizers>
+                </Border>               
+                
+                <Label Text="{Binding Challenge.Description}"                
+           HorizontalOptions="CenterAndExpand"
            TextColor="Black"
            FontSize="16"
-           Padding="0,0,0,10"
+           Padding="10,10,0,10"
            HorizontalTextAlignment="Start"
            VerticalTextAlignment="Start"
-           LineBreakMode="WordWrap"/>
-            </FlexLayout>
-
+            LineBreakMode="WordWrap"/>
+                
+            </FlexLayout>        
+        
+        
             <BoxView HeightRequest=".1"
                      BackgroundColor="LightGrey"/>
 
