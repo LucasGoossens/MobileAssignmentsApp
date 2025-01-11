@@ -43,8 +43,7 @@
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
+		<MauiSplashScreen Include="Resources\Splash\fiftytwosplash.jpg" Color="#ffffff" BaseSize="64,64" Resize="false"/>
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -142,6 +141,10 @@
 
 	<ItemGroup>
 	  <Resource Include="Resources\Images\portait.jpg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Splash\fiftytwosplash.jpg" />
 	</ItemGroup>
 
 </Project>
