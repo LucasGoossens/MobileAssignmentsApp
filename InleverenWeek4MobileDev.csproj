@@ -21,7 +21,7 @@
 		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>InleverenWeek4MobileDev</ApplicationTitle>
+		<ApplicationTitle>52 Assignments</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.inleverenweek4mobiledev</ApplicationId>
@@ -40,10 +40,10 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.jpg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\Splash\fiftytwosplash.jpg" Color="#ffffff" BaseSize="64,64" Resize="false"/>
+		<MauiSplashScreen Include="Resources\Splash\fiftytwosplash.svg" Color="#ffffff" BaseSize="256, 256" Resize="true" />
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 
@@ -141,10 +141,6 @@
 
 	<ItemGroup>
 	  <Resource Include="Resources\Images\portait.jpg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Resources\Splash\fiftytwosplash.jpg" />
 	</ItemGroup>
 
 </Project>
