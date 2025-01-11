@@ -20,7 +20,7 @@
         <!-- Scrollable Content -->
         <ScrollView Grid.Row="0" Orientation="Vertical">
             <VerticalStackLayout>
-                <Button Command="{Binding NavigateToSQLiteBrowserCommand}"/>
+                <Button Command="{Binding NavigateToSQLiteBrowserCommand}" IsVisible="False"/>
                 <!-- Trending Challenges -->
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
                     <Label Text="Trending Challenges"
